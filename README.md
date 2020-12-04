@@ -4,10 +4,14 @@ TRMS v1.1 2/12/20 1:35AM
 
 [2] Login with creditionals: 
       benco/password
+      
       dirsup/password
+      
       dirhead/password
-      mgmt/password'
-      dirmgmt/password'
+      
+      mgmt/password
+      
+      dirmgmt/password
 
 [3] Benco Page Should be returned 
 
