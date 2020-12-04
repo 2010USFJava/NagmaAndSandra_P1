@@ -15,16 +15,16 @@ public class JsonRequestHelper {
 	
 	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		
-		switch(req.getRequestURI()) {
-		
-		case "/TRMS_NagmaSandra/getsession.json":
-			EmployeeController.getSessionEmployee(req, res);
-			break;
-		
-		default:
-			Employees e1 = new Employees("?","?");
-			res.getWriter().write(new ObjectMapper().writeValueAsString(e1));
-		}
+//		switch(req.getRequestURI()) {
+//		
+//		case "/TRMS_NagmaSandra/getsession.json":
+//			EmployeeController.getSessionEmployee(req, res);
+//			break;
+//		
+//		default:
+//			//Employees e1 = new Employees("?","?");
+//			//res.getWriter().write(new ObjectMapper().writeValueAsString(e1));
+//		}
 		
 	}
 

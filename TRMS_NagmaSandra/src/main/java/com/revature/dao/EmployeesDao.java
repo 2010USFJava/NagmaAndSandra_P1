@@ -1,5 +1,5 @@
 package com.revature.dao;
 
-public class EmployeesDao {
+public interface EmployeesDao {
 
 }

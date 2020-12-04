@@ -30,7 +30,7 @@ public class LoginController {
 			return "wrongcreds.change";
 		}else {
 			req.getSession().setAttribute("currentuser", aPerson);
-			System.out.println("person: " + aPerson); // JavaScript's http response
+			System.out.println("LoginController: person: " + aPerson); // JavaScript's http response
 			return "approver.benco";
 		}
 	}
