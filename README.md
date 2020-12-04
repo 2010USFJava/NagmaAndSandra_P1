@@ -3,6 +3,7 @@ TRMS v1.2 12/3/20 1:35AM
 [1] Goto http://localhost:8080/TRMS/login.change
 
 [2] Login with creditionals: 
+
       benco/password
       
       dirsup/password
