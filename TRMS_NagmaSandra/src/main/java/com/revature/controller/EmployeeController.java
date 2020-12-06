@@ -13,9 +13,8 @@ public class EmployeeController {
 	public static void getSessionEmployee(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		
 		
-		Employees e1 = (Employees) req.getSession().getAttribute("currentuser");
-		
-		res.getWriter().write(new ObjectMapper().writeValueAsString(e1));
+//		Employees e1 = (Employees) req.getSession().getAttribute("currentuser");
+//		res.getWriter().write(new ObjectMapper().writeValueAsString(e1));
 	}
 	
 
