@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  
+<html>  
         <head>
             <title>Tution Reimbursment Form</title>
             <meta charset="utf-8">
@@ -20,20 +19,10 @@
                   </div>
                   <ul class="nav navbar-nav">
                     <li class="active"><a href="profile.html">Home</a></li>
-                    <li><a href="form.html">Form</a></li>
-                  <li><a href="login.html">Log Out</a></li>
+        <li><a href="approver.html">Form</a></li>
+      <li><a href="login.html">Log Out</a></li>
                   </ul>
                 </div>              
-
-              <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <ul class="nav navbar-nav">
-                    <li class="active"><a href="C:\Users\PMaur\Documents\Revature Documents\web\JS\prj1\display.html">Tution History</a></li>
-                    <li><a href="C:\Users\PMaur\Documents\Revature Documents\web\JS\prj1\form.html">Tution Reimbursment Form</a></li>
-                    <li><a href="C:\Users\PMaur\Documents\Revature Documents\web\JS\prj1\view.html">View Approval Status/Upload Grading Documents</a></li>
-                  </ul>
-                </div>
-              </nav>
             </div>
                 
               <div class="container">
@@ -115,29 +104,36 @@
     </div>
 
     <div class="form-group">
-        <label for="wtime">Work Time Missed</label>
-        <input type="wrtime" class="form-control" id="wrtime" placeholder="Time Missed">
-      </div>
-
-<div>
-    <label for="approval">Depaartment Head</label>
-            <input type="checkbox" value="Approved">
-            <input type="checkbox" value="Denied">
-    <div class="checkbox">
-    </div>
+      <label for="wtime">Work Time Missed</label>
+      <input type="wrtime" class="form-control" id="wrtime" placeholder="Time Missed">
+    </div>    
 
     <div>
-      <label for="approval">Depaartment Supervisor</label>
-              <input type="checkbox" value="Approved">
-              <input type="checkbox" value="Denied">
-      <div class="checkbox">
+      <label for="eac">Estimated Approval Cost</label>
+      <input type="eac" id="eac" value="200"readonly> <!--pull in data with java javascript-->
+    </div>
+
+    <br>
+
+    <div>
+      <label for="approval">Department Head</label>
+              <input type="radio" name="approval" checked>Approved</input>
+              <input type="radio" name="approval">Denied</input>
+      <div class="radio">
       </div>
 
       <div>
+        <label for="approval">Department Supervisor</label>
+                <input type="radio" name="approval" checked>Approved</input>
+                <input type="radio" name="approval">Denied</input>
+        <div class="radio">
+        </div>
+  
+      <div>
         <label for="approval">Benefit Coordinator</label>
-                <input type="checkbox" value="Approved">
-                <input type="checkbox" value="Denied">
-        <div class="checkbox">
+                <input type="radio" name="approval" checked>Approved</input>
+                <input type="radio" name="approval">Denied</input>
+        <div class="radio">
         </div>
     
     <button type="submit" class="btn btn-default">Submit</button>
