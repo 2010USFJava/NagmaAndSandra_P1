@@ -20,13 +20,14 @@
 	    <servlet-name>MasterServlet</servlet-name>
 		<url-pattern>*.change</url-pattern>
 		<url-pattern>*.benco</url-pattern>
+		<url-pattern>/approval</url-pattern>
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
   
  
 	<servlet>
 		<servlet-name>JSONMasterServlet</servlet-name>
-		<servlet-class>com.example.servlet.JSONMasterServlet</servlet-class>
+		<servlet-class>com.revature.servlet.JSONMasterServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>

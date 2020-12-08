@@ -58,14 +58,15 @@ public class ApprovalDaoImpl implements ApprovalDao{
 		Approvals aPerson = new Approvals();
 		
 		try {
-			Connection conn = DriverManager.getConnection(this.url,this.username, this.password);
+			Connection conn = DriverManager.getConnection(this.url, this.username, this.password);
 			String sql = "select * from approvers where a_username=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				aPerson.setUsername(rs.getString(1));
-				aPerson.setPassword(rs.getString(2));
+				aPerson.setUsername(rs.getString(3)); // Database positions
+				aPerson.setPassword(rs.getString(4));
+				aPerson.setRole(rs.getInt(2));
 				//vill.setSuperPower(rs.getString(2));
 				//vill.setBounty(rs.getInt(3));
 			}	

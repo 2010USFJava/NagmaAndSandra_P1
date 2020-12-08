@@ -2,7 +2,7 @@ package com.revature.model;
 
 public class Approvals {
 	private int aid; 
-	private String type;
+	private int role;
 	private String username; 
 	private String password;
 	
@@ -17,18 +17,17 @@ public class Approvals {
 	}
 	
 	
-
-	public Approvals(String type, String username, String password) {
+	public Approvals(int role, String username, String password) {
 		super();
-		this.type = type;
+		this.role = role;
 		this.username = username;
 		this.password = password;
 	}
 
-	public Approvals(int aid, String type, String username, String password) {
+	public Approvals(int aid, int role, String username, String password) {
 		super();
 		this.aid = aid;
-		this.type = type;
+		this.role = role;
 		this.username = username;
 		this.password = password;
 	}
@@ -57,19 +56,19 @@ public class Approvals {
 		this.password = password;
 	}
 
-	public String getType() {
-		return type;
+	public int getRole() {
+		return role;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Approvals [username=" + username + ", password=" + password + ", type=" + type + "]";
+		return "Approvals [username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 	
 

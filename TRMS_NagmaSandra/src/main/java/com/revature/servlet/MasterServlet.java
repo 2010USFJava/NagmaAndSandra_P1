@@ -15,15 +15,15 @@ public class MasterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		System.out.println("in doGet");
+		System.out.println("MasterServlet.java : in doGet");
 		req.getRequestDispatcher(RequestHelper.process(req)).forward(req, res);
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
-		System.out.println("in doPost");
+		System.out.println("MasterServlet.java : in doPost");
 		req.getRequestDispatcher(RequestHelper.process(req)).forward(req, res);
-
+	
 	}
 	
 
