@@ -20,6 +20,7 @@
 	    <servlet-name>MasterServlet</servlet-name>
 		<url-pattern>*.change</url-pattern>
 		<url-pattern>*.benco</url-pattern>
+		<url-pattern>*.employee</url-pattern>
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
   

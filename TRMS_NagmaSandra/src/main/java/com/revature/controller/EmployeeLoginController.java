@@ -9,28 +9,29 @@ import com.revature.model.Employee;
 import com.revature.service.ApprovalService;
 import com.revature.service.EmployeeService;
 
-public class LoginController {
-	static ApprovalService aServ = new ApprovalService();
+public class EmployeeLoginController {
+	static EmployeeService eServ = new EmployeeService();
 	
 	// Displays Login Page
 	public static String login(HttpServletRequest req) throws SQLException {
 		if(!req.getMethod().equals("POST")) {
-			return "resources/html/login.html";
+			return "resources/html/empLogin.html";
 			}
 	
 		// HTML login name variables
-		String username = req.getParameter("n_user");
-		String password = req.getParameter("n_pass");
+		String username = req.getParameter("emp_user");
+		String password = req.getParameter("emp_pass");
 		
+
 		
-		Approvals aPerson = aServ.loginGetApproval(username, password);
+		Employee ePerson = eServ.loginGetEmployee(username, password);
 		
-		if(aPerson==null) {
+		if(ePerson==null) {
 			return "wrongcreds.change";
 		}else {
-			req.getSession().setAttribute("currentuser", aPerson);
-			System.out.println("LoginController: person: " + aPerson); // JavaScript's http response
-			return "approver.benco";
+			req.getSession().setAttribute("currentuser", ePerson);
+			System.out.println("LoginController: person: " + ePerson); // JavaScript's http response
+			return "home.employee";
 		}
 	}
 }

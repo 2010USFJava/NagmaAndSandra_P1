@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controller.EmployeeController;
-import com.revature.model.Employees;
+import com.revature.model.Employee;
 
 
 public class JsonRequestHelper {

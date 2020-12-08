@@ -10,53 +10,49 @@ import java.util.Properties;
 
 public class ConnFactory {
 	
+private static ConnFactory cf;
+
 	static {
-		try {
-			Class.forName("org.postgresql.Driver");
-		}catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
+	try {
+		Class.forName("org.postgresql.Driver");
+	}catch(ClassNotFoundException e) {
+		e.printStackTrace();
 	}
 	
-	private static ConnFactory cf;
+}
 	
 	private ConnFactory() {
 		super();
 	}
 	
+	//public static synchronized "getter" method
 	public static synchronized ConnFactory getInstance() {
-		if(cf == null) {
-			cf = new ConnFactory();
+		if(cf==null) {
+			cf= new ConnFactory();
 		}
 		return cf;
 	}
 	
+	//methods that do stuff
 	public Connection getConnection() {
-		//Connection conn = null;
-		//Properties prop = new Properties();
-		String username = "root";
-		String password = "password";
-		String url = "jdbc:postgresql://sandradb.cbgpsxwsco96.us-east-2.rds.amazonaws.com:5432/postgres";
-		//Connection conn = DriverManager.getConnection(this.url,this.username, this.password);
+		Connection conn= null;
+		Properties prop = new Properties();
 		
-		
-//		try {
-//			prop.load(new FileReader("database.properties"));
-//			conn = DriverManager.getConnection(
-//					prop.getProperty("url"), 
-//					prop.getProperty("username"),
-//					prop.getProperty("password")	
-//				);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+			prop.load(loader.getResourceAsStream("database.properties"));
+			conn=DriverManager.getConnection(
+					prop.getProperty("url"),prop.getProperty("username"),prop.getProperty("password"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return conn;
