@@ -20,17 +20,21 @@ public class JsonRequestHelper {
 		
 		System.out.println("JsonRequestHelper.java : ");
 		switch(req.getRequestURI()) {	
-			case "/TRMS_NagmaSandra/getsession.json":
-			System.out.println("JsonRequestHelper.java : " + "getsession.json");
-			System.out.println("\nConvert to json data...\n");
-			ApprovalController.getSessionApprover(req, res);
-			
-			break;
+//			case "/TRMS_EmployeeMoon/getsession.json":
+//				System.out.println("JsonRequestHelper.java : " + "getsession.json");
+//				System.out.println("\nConvert to json data...\n");
+//				ApprovalController.getSessionApprover(req, res);
+//			break;
+			case "/TRMS_EmployeeMoon/getEmployeesSession.json":
+				System.out.println("JsonRequestHelper.java : " + "getEmployeesSession.json");
+				System.out.println("\nConvert to json data...\n");
+				ApprovalController.getEmployeesSession(req, res);
+				break;
 			
 			default:
-				Approval aPerson = new Approval(0,"?","?");
+				Approval aPerson = new Approval(0,"default","default");
 				res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
-				System.out.println("JsonRequestHelper.java : " + aPerson);
+				System.out.println("JsonRequestHelper.java Default : " + aPerson);
 			}
 	}
 

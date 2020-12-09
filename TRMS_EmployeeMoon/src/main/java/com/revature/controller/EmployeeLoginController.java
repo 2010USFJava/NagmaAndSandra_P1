@@ -21,11 +21,12 @@ static EmployeeService eServ = new EmployeeService();
 		String username = req.getParameter("n_emp_user");
 		String password = req.getParameter("n_emp_pass");
 		
+		
 
 		Employee ePerson = eServ.loginGetEmployee(username, password);
 		
 		if(ePerson==null) {
-			return "wrongcreds.change";
+			return "wrongcreds.change"; //update
 		}else {
 			req.getSession().setAttribute("currentuser", ePerson);
 			System.out.println("LoginController: person: " + ePerson); // JavaScript's http response
@@ -33,5 +34,12 @@ static EmployeeService eServ = new EmployeeService();
 			return EmployeeController.employee(req);
 		}
 	}
+	
+	public static boolean loginVerified(HttpServletRequest req){
+	
+		return true;
+		
+	}
+	
 
 }

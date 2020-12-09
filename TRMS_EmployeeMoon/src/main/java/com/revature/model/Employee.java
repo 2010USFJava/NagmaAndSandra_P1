@@ -24,18 +24,19 @@ public class Employee {
 
 
 
-	public Employee(int empId, String firstName, String lastName, String username, String password, String address,
+	public Employee(int empId, String username, String password, String firstName, String lastName, String address,
 			String email, String phone) {
 		super();
 		this.empId = empId;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
 	}
+
 
 	public int getEmpId() {
 		return empId;
@@ -104,9 +105,9 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employees [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", address=" + address + ", email=" + email + ", phone=" + phone
-				+ ", funds=" + "]";
+		return "Employee [empId=" + empId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", address=" + address + ", email=" + email + ", phone="
+				+ phone + "]";
 	}
 	
 	

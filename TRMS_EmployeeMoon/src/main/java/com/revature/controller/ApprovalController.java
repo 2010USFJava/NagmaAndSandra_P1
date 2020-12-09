@@ -1,15 +1,23 @@
 package com.revature.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDao;
+import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.model.Approval;
+import com.revature.model.Employee;
 
 public class ApprovalController {
+	
+	public static EmployeeDao empdao = new EmployeeDaoImpl(); //Database Code
+	public static List<Employee> empList;	
 	
 	public static String approval(HttpServletRequest req) {
 		//System.out.println("ApprovalController: role: " + req.getSession().getAttribute("currentrole"));
@@ -55,6 +63,26 @@ public class ApprovalController {
 		/* Sending Employee info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
 		res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
+		
+	}
+	
+	
+	public static void getEmployeesSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
+		System.out.println("ApprovalController, getSessionEmployee.java"); //debug code
+	
+				try {
+					empList = empdao.getAllEmployees();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} // Database info 
+				System.out.println("ApprovalController, getSessionEmployeesjava: eperson = " + empList);
+				res.getWriter().write(new ObjectMapper().writeValueAsString(empList));
+		
+		/* Sending Employee info to JsonRequestHelper which will convert to json data */
+		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
+		
 		
 	}
 	

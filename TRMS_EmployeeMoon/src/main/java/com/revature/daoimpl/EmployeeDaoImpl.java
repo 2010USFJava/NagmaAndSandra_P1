@@ -14,6 +14,24 @@ import com.revature.util.ConnFactory;
 public class EmployeeDaoImpl implements EmployeeDao{
 	public static ConnFactory cf = ConnFactory.getInstance();
 
+	public List<Employee> getEmpUserPass(){ // get credentials
+		Connection conn = cf.getConnection();
+		List<Employee> empUserList = new ArrayList<Employee>();
+		
+		try {
+			String sql = "select * from employees";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				empUserList.add(new Employee(rs.getString(2),rs.getString(3)));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return empUserList;
+	}
+	
 	public List<Employee> getAllEmployees(){ // getAllEmployees()
 		Connection conn = cf.getConnection();
 		List<Employee> empList = new ArrayList<Employee>();
@@ -23,7 +41,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				empList.add(new Employee(rs.getString(2),rs.getString(3)));
+				empList.add(new Employee(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -31,6 +49,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		return empList;
 	}
+	
 	
 
 	public void insertEmployee(Employee ePerson) {

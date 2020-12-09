@@ -1,16 +1,10 @@
-/**
- * 
- */
-
-
-
 function getApproval(){	
 	// [1] Create new xhr object 
 	var xhr = new XMLHttpRequest();
 	
 	
 	// [3] Open a request
-	xhr.open("GET","/TRMS_NagmaSandra/getsession.json", true);
+	xhr.open("GET","/TRMS_EmployeeMoon/getsession.json", true);
 	//xhr.open("GET",url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
 
@@ -33,13 +27,14 @@ function getApproval(){
 
 function loadApprover(aPerson){
     document.getElementById("i_approver").innerHTML = aPerson.username;
+   
 }
 
 window.addEventListener('load', getApproval, false);
-    /* [1] click,load       : event
-     * [2] xhr function     : getApproval
-     * [3] The use capture  : bubble or capture
-     */
+    // [1] click,load       : event
+     // [2] xhr function     : getApproval
+    // [3] The use capture  : bubble or capture
+    //
 
 
 
