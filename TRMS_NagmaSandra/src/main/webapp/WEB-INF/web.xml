@@ -21,6 +21,7 @@
 		<url-pattern>*.change</url-pattern>
 		<url-pattern>*.benco</url-pattern>
 		<url-pattern>*.employee</url-pattern>
+		<url-pattern>*.view</url-pattern>
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
   
