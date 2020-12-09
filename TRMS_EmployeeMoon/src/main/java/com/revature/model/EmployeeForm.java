@@ -8,54 +8,43 @@ public class EmployeeForm {
 	
 	//NEED TO MATCH HTML FORM NAMES	
 		private int id;
-		private int eId;
-		private int deptId;
-		private Date date;
-		private Time currentTime; 
-		private Date eDate;
-		private String location;
+		private int employeeId;
+		private int eventId;
+		private Date currDate;
+		private Time currTime; 
+		private Date eventDate;
+		private String eventLocation;
+		private double eventCost;
 		private String description;
-		private double cost;
 		private String gradingFormat;
-		private int eventTypeId;
-		private String workRelatedJustification;
+		private String workRelJust;
 		private Blob eventAttachment;
-		private String timeMissed;
+		private String workTimeMissed;
 		private double estimatedReimbursement;
-		private String status;
-		private boolean supApproval;
-		private boolean headApproval;
-		private boolean bencoApproval;
 		
-		public EmployeeForm()
-		{
+		public EmployeeForm() {
 			super();
+
 		}
 
-		public EmployeeForm(int id, int eId, int deptId, Date date, Time currentTime, Date eDate, String location,
-				String description, double cost, String gradingFormat, int eventTypeId, String workRelatedJustification,
-				Blob eventAttachment, String timeMissed, double estimatedReimbursement, String status, boolean supApproval,
-				boolean headApproval, boolean bencoApproval) {
+		public EmployeeForm(int id, int employeeId, int eventId, Date currDate, Time currTime, Date eventDate,
+				String eventLocation, double eventCost, String description, String gradingFormat, String workRelJust,
+				Blob eventAttachment, String workTimeMissed, double estimatedReimbursement) {
 			super();
 			this.id = id;
-			this.eId = eId;
-			this.deptId = deptId;
-			this.date = date;
-			this.currentTime = currentTime;
-			this.eDate = eDate;
-			this.location = location;
+			this.employeeId = employeeId;
+			this.eventId = eventId;
+			this.currDate = currDate;
+			this.currTime = currTime;
+			this.eventDate = eventDate;
+			this.eventLocation = eventLocation;
+			this.eventCost = eventCost;
 			this.description = description;
-			this.cost = cost;
 			this.gradingFormat = gradingFormat;
-			this.eventTypeId = eventTypeId;
-			this.workRelatedJustification = workRelatedJustification;
+			this.workRelJust = workRelJust;
 			this.eventAttachment = eventAttachment;
-			this.timeMissed = timeMissed;
+			this.workTimeMissed = workTimeMissed;
 			this.estimatedReimbursement = estimatedReimbursement;
-			this.status = status;
-			this.supApproval = supApproval;
-			this.headApproval = headApproval;
-			this.bencoApproval = bencoApproval;
 		}
 
 		public int getId() {
@@ -66,52 +55,60 @@ public class EmployeeForm {
 			this.id = id;
 		}
 
-		public int geteId() {
-			return eId;
+		public int getEmployeeId() {
+			return employeeId;
 		}
 
-		public void seteId(int eId) {
-			this.eId = eId;
+		public void setEmployeeId(int employeeId) {
+			this.employeeId = employeeId;
 		}
 
-		public int getDeptId() {
-			return deptId;
+		public int getEventId() {
+			return eventId;
 		}
 
-		public void setDeptId(int deptId) {
-			this.deptId = deptId;
+		public void setEventId(int eventId) {
+			this.eventId = eventId;
 		}
 
-		public Date getDate() {
-			return date;
+		public Date getCurrDate() {
+			return currDate;
 		}
 
-		public void setDate(Date date) {
-			this.date = date;
+		public void setCurrDate(Date currDate) {
+			this.currDate = currDate;
 		}
 
-		public Time getCurrentTime() {
-			return currentTime;
+		public Time getCurrTime() {
+			return currTime;
 		}
 
-		public void setCurrentTime(Time currentTime) {
-			this.currentTime = currentTime;
+		public void setCurrTime(Time currTime) {
+			this.currTime = currTime;
 		}
 
-		public Date geteDate() {
-			return eDate;
+		public Date getEventDate() {
+			return eventDate;
 		}
 
-		public void seteDate(Date eDate) {
-			this.eDate = eDate;
+		public void setEventDate(Date eventDate) {
+			this.eventDate = eventDate;
 		}
 
-		public String getLocation() {
-			return location;
+		public String getEventLocation() {
+			return eventLocation;
 		}
 
-		public void setLocation(String location) {
-			this.location = location;
+		public void setEventLocation(String eventLocation) {
+			this.eventLocation = eventLocation;
+		}
+
+		public double getEventCost() {
+			return eventCost;
+		}
+
+		public void setEventCost(double eventCost) {
+			this.eventCost = eventCost;
 		}
 
 		public String getDescription() {
@@ -122,14 +119,6 @@ public class EmployeeForm {
 			this.description = description;
 		}
 
-		public double getCost() {
-			return cost;
-		}
-
-		public void setCost(double cost) {
-			this.cost = cost;
-		}
-
 		public String getGradingFormat() {
 			return gradingFormat;
 		}
@@ -138,20 +127,12 @@ public class EmployeeForm {
 			this.gradingFormat = gradingFormat;
 		}
 
-		public int getEventTypeId() {
-			return eventTypeId;
+		public String getWorkRelJust() {
+			return workRelJust;
 		}
 
-		public void setEventTypeId(int eventTypeId) {
-			this.eventTypeId = eventTypeId;
-		}
-
-		public String getWorkRelatedJustification() {
-			return workRelatedJustification;
-		}
-
-		public void setWorkRelatedJustification(String workRelatedJustification) {
-			this.workRelatedJustification = workRelatedJustification;
+		public void setWorkRelJust(String workRelJust) {
+			this.workRelJust = workRelJust;
 		}
 
 		public Blob getEventAttachment() {
@@ -162,12 +143,12 @@ public class EmployeeForm {
 			this.eventAttachment = eventAttachment;
 		}
 
-		public String getTimeMissed() {
-			return timeMissed;
+		public String getWorkTimeMissed() {
+			return workTimeMissed;
 		}
 
-		public void setTimeMissed(String timeMissed) {
-			this.timeMissed = timeMissed;
+		public void setWorkTimeMissed(String workTimeMissed) {
+			this.workTimeMissed = workTimeMissed;
 		}
 
 		public double getEstimatedReimbursement() {
@@ -178,48 +159,14 @@ public class EmployeeForm {
 			this.estimatedReimbursement = estimatedReimbursement;
 		}
 
-		public String getStatus() {
-			return status;
-		}
-
-		public void setStatus(String status) {
-			this.status = status;
-		}
-
-		public boolean isSupApproval() {
-			return supApproval;
-		}
-
-		public void setSupApproval(boolean supApproval) {
-			this.supApproval = supApproval;
-		}
-
-		public boolean isHeadApproval() {
-			return headApproval;
-		}
-
-		public void setHeadApproval(boolean headApproval) {
-			this.headApproval = headApproval;
-		}
-
-		public boolean isBencoApproval() {
-			return bencoApproval;
-		}
-
-		public void setBencoApproval(boolean bencoApproval) {
-			this.bencoApproval = bencoApproval;
-		}
-
 		@Override
 		public String toString() {
-			return "Form [id=" + id + ", eId=" + eId + ", deptId=" + deptId + ", date=" + date + ", currentTime="
-					+ currentTime + ", eDate=" + eDate + ", location=" + location + ", description=" + description
-					+ ", cost=" + cost + ", gradingFormat=" + gradingFormat + ", eventTypeId=" + eventTypeId
-					+ ", workRelatedJustification=" + workRelatedJustification + ", eventAttachment=" + eventAttachment
-					+ ", timeMissed=" + timeMissed + ", estimatedReimbursement=" + estimatedReimbursement + ", status="
-					+ status + ", supApproval=" + supApproval + ", headApproval=" + headApproval + ", bencoApproval="
-					+ bencoApproval + "]";
-		}		
-	
+			return "EmployeeForm [id=" + id + ", employeeId=" + employeeId + ", eventId=" + eventId + ", currDate="
+					+ currDate + ", currTime=" + currTime + ", eventDate=" + eventDate + ", eventLocation="
+					+ eventLocation + ", eventCost=" + eventCost + ", description=" + description + ", gradingFormat="
+					+ gradingFormat + ", workRelJust=" + workRelJust + ", eventAttachment=" + eventAttachment
+					+ ", workTimeMissed=" + workTimeMissed + ", estimatedReimbursement=" + estimatedReimbursement + "]";
+		}
+		
 
 }

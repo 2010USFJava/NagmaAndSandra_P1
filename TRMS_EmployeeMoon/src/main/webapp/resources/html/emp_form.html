@@ -2,9 +2,126 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Employee Portal</title>
 </head>
 <body>
+<div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" class="active" href="/TRMS_EmployeeMoon/employeehome">Tuition Reimbursement Management System</a>
+				</div>
+				<ul class="nav navbar-nav">
+						<li><a
+							href="/TRMS_EmployeeMoon/employeehistory">History</a></li>
+						<li><a
+							href="/TRMS_EmployeeMoon/employeeform">Form</a></li>
+						<li><a
+							href="/TRMS_EmployeeMoon/employeestatus">View
+								Approval Status/Upload Grading Documents</a></li>
+						<li><a href="/TRMS_EmployeeMoon/home">Log Out</a></li>
+					</ul>
+			</div>
 
+	</div>
+
+	<div class="container">
+		<h3>Tuition Reimbursement Form</h3>
+	</div>
+	<div>
+		<div class="container">
+
+			<div class="center-block"
+				style="background-color: yellow; width: 200px;">Only Input
+				tuition cost DO NOT add money for books, parking fees, or any other
+				fees</div>
+		</div>
+	</div>
+	<div>
+
+		<h3>Employee</h3>
+
+		<div id="main">
+
+			<div id="form">
+
+				<form action="/action_page.php">
+					<div class="form-group">
+						<label for="firstName">First Name:</label> <input type="text"
+							class="form-control" id="firstName">
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name:</label> <input type="text"
+							class="form-control" id="lastName">
+					</div>
+
+					<div class="form-group">
+						<label for="email">Email address:</label> <input type="email"
+							class="form-control" id="email">
+					</div>
+					<div class="form-group">
+						<label for=date>Event Date:</label> <input type="date"
+							class="form-control" id="date">
+					</div>
+					<div class="form-group">
+						<label for=time>Event Time:</label> <input type="time"
+							class="form-control" id="time">
+					</div>
+					<div class="form-group">
+						<label for=location>Event Location:</label> <input type="text"
+							class="form-control" id="location">
+					</div>
+					<div class="form-group">
+						<label for="description">Event Description:</label> <input
+							type="text" class="form-control" id="description">
+					</div>
+					<div class="form-group">
+						<label for="cost">Event Cost:</label> <input type="number" min="1"
+							max="1000" step="0.01" class="form-control" id="cost" />
+					</div>
+					<div class="form-group">
+						<select class="custom-select custom-select-md">
+							<option selected>Grading Format</option>
+							<option value="1">Perform Presentation</option>
+							<option value="2">Provide Grade</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select class="custom-select custom-select-md">
+							<option selected>Event Type</option>
+							<option value="1">University Courses</option>
+							<option value="2">Seminars</option>
+							<option value="3">Certification Preparation Classes</option>
+							<option value="4">Certification</option>
+							<option value="5">Technical Training</option>
+							<option value="6">Other</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="work_rel_just">Event Description:</label> <input
+							type="text" class="form-control" id="work_rel_just">
+					</div>
+					<div class="form-group">
+						<label for="work_time_missed">Event Description:</label> <input
+							type="text" class="form-control" id="work_time_missed">
+					</div>
+					<div class="form-group">
+						<label for="reimburse">Projected Reimbursment</label> <input
+							class="form-control" type="text"
+							placeholder="Projected Reimbursment" readonly>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+
+			</div>
+		</div>
 </body>
 </html>

@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.revature.model.Approval;
 import com.revature.service.ApprovalService;
-import com.revature.service.EmployeeService;
 
 public class ApprovalLoginController {
 	

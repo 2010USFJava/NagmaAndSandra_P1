@@ -18,27 +18,27 @@ public class ApprovalController {
 		if(role.equals(1)) {
 			System.out.println("ApprovalController: role: " + role);
 			
-			return "resources/html/approval_benco.html";
+			return "resources/html/app_benco.html";
 		}
 		if(role.equals(2)) {
 			System.out.println("ApprovalController: role: " + role);
-			return "resources/html/approval_direct_superviser.html";
+			return "resources/html/app_direct_superviser.html";
 		}
 		if(role.equals(3)) {
 			System.out.println("ApprovalController: role: " + role);
-			return "resources/html/approval_direct_head.html";
+			return "resources/html/app_direct_head.html";
 		}
 		if(role.equals(4)) {
 			System.out.println("ApprovalController: role: " + role);
-			return "resources/html/approval_mgmt.html";
+			return "resources/html/app_mgmt.html";
 		}
 		if(role.equals(5)) {
 			System.out.println("ApprovalController: role: " + role);
-			return "resources/html/approval_direct_mgmt.html";
+			return "resources/html/app_direct_mgmt.html";
 		}
 		else {
 			System.out.println("ApprovalController: role: " + req.getSession().getAttribute("currentrole"));
-			return "resources/html/approval.html";
+			return "resources/html/app_benco.html";
 		}
 		
 	}

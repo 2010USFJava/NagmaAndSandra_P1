@@ -2,38 +2,63 @@ package com.revature.model;
 
 public class Employee {
 	
-	private int eid;
-	private String username; 
+	private int empId;
+	private String username;
 	private String password;
-	private String eFirst;
-	private String eLast;
-	private String eEmail;
-	private int eDepartmentId;
-	private int eRole;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String email;
+	private String phone;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(int eid, String username, String password, String eFirst, String eLast, String eEmail,
-			int eDepartmentId, int eRole) {
+	
+	public Employee(String username, String password) {
 		super();
-		this.eid = eid;
 		this.username = username;
 		this.password = password;
-		this.eFirst = eFirst;
-		this.eLast = eLast;
-		this.eEmail = eEmail;
-		this.eDepartmentId = eDepartmentId;
-		this.eRole = eRole;
 	}
 
-	public int getId() {
-		return eid;
+
+
+	public Employee(int empId, String firstName, String lastName, String username, String password, String address,
+			String email, String phone) {
+		super();
+		this.empId = empId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.email = email;
+		this.phone = phone;
 	}
 
-	public void setId(int eid) {
-		this.eid = eid;
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getUsername() {
@@ -52,56 +77,37 @@ public class Employee {
 		this.password = password;
 	}
 
-	public String geteFirst() {
-		return eFirst;
+	public String getAddress() {
+		return address;
 	}
 
-	public void seteFirst(String eFirst) {
-		this.eFirst = eFirst;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String geteLast() {
-		return eLast;
+	public String getEmail() {
+		return email;
 	}
 
-	public void seteLast(String eLast) {
-		this.eLast = eLast;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String geteEmail() {
-		return eEmail;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void seteEmail(String eEmail) {
-		this.eEmail = eEmail;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public int geteDepartmentId() {
-		return eDepartmentId;
-	}
-
-	public void seteDepartmentId(int eDepartmentId) {
-		this.eDepartmentId = eDepartmentId;
-	}
-
-	public int geteRole() {
-		return eRole;
-	}
-
-	public void seteRole(int eRole) {
-		this.eRole = eRole;
-	}
 
 	@Override
 	public String toString() {
-		return "Employee [eid=" + eid + ", username=" + username + ", password=" + password + ", eFirst=" + eFirst
-				+ ", eLast=" + eLast + ", eEmail=" + eEmail + ", eDepartmentId=" + eDepartmentId + ", eRole=" + eRole
-				+ "]";
+		return "Employees [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+				+ username + ", password=" + password + ", address=" + address + ", email=" + email + ", phone=" + phone
+				+ ", funds=" + "]";
 	}
-
 	
-	
-
-
 	
 }

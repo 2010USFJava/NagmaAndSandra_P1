@@ -1,5 +1,9 @@
 package com.revature.controller;
 
-public class EmployeeStatusController {
+import javax.servlet.http.HttpServletRequest;
 
+public class EmployeeStatusController {
+	public static String status(HttpServletRequest req) {
+		return "resources/html/emp_status.html";
+	}
 }

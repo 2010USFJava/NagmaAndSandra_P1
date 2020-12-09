@@ -10,7 +10,8 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-    <servlet>
+    
+   <servlet>
     <description></description>
     <display-name>MasterServlet</display-name>
     <servlet-name>MasterServlet</servlet-name>
@@ -19,15 +20,15 @@
   
 	 <servlet-mapping>
 	    <servlet-name>MasterServlet</servlet-name>
-		<!--  <url-pattern>*.change</url-pattern>
-		<url-pattern>*.employee</url-pattern> -->
 		<url-pattern>/home</url-pattern>
 		<url-pattern>/employeelogin</url-pattern>
 		<url-pattern>/employeehome</url-pattern>
+		<url-pattern>/employeestatus</url-pattern>
+		<url-pattern>/employeehistory</url-pattern>
+		<url-pattern>/employeeform</url-pattern>
 		<url-pattern>/approvallogin</url-pattern>
 		<url-pattern>/approvalhome</url-pattern>
 		
-		<url-pattern>*.view</url-pattern>
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
   
@@ -40,5 +41,4 @@
 		<servlet-name>JSONMasterServlet</servlet-name>
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
-  
 </web-app>

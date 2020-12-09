@@ -1,5 +1,9 @@
 package com.revature.controller;
 
-public class EmployeeHistoryController {
+import javax.servlet.http.HttpServletRequest;
 
+public class EmployeeHistoryController {
+	public static String history(HttpServletRequest req) {
+		return "resources/html/emp_history.html";
+	}
 }
