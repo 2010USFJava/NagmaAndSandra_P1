@@ -14,22 +14,22 @@ import com.revature.util.ConnFactory;
 public class EmployeeDaoImpl implements EmployeeDao{
 	public static ConnFactory cf = ConnFactory.getInstance();
 
-	public List<Employee> getAllEmployees(){ // getAllEmployees()
+	public List<Employee> getEmpUserPass(){ // getAllEmployees()
 		Connection conn = cf.getConnection();
-		List<Employee> empList = new ArrayList<Employee>();
+		List<Employee> empUserList = new ArrayList<Employee>();
 		
 		try {
 			String sql = "select * from employees";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				empList.add(new Employee(rs.getString(2),rs.getString(3)));
+				empUserList.add(new Employee(rs.getString(2),rs.getString(3)));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return empList;
+		return empUserList;
 	}
 	
 
@@ -64,5 +64,24 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return ePerson;
 	
 	}
+	
+	public List<Employee> getAllEmployees(){ // getAllEmployees()
+		Connection conn = cf.getConnection();
+		List<Employee> empList = new ArrayList<Employee>();
+		
+		try {
+			String sql = "select * from employees";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				empList.add(new Employee(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return empList;
+	}
+
 
 }
