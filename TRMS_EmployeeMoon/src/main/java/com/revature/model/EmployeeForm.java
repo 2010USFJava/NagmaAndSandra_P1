@@ -1,6 +1,5 @@
 package com.revature.model;
 
-import java.sql.Blob;
 import java.sql.Time;
 import java.util.Date;
 
@@ -8,17 +7,19 @@ public class EmployeeForm {
 	
 	//NEED TO MATCH HTML FORM NAMES	
 		private int id;
+		private String firstName;
+		private String lastName;
 		private int employeeId;
-		private int eventId;
 		private Date currDate;
-		private Time currTime; 
 		private Date eventDate;
+		private Time eventTime; 
 		private String eventLocation;
 		private double eventCost;
+		private String eventType;
 		private String description;
 		private String gradingFormat;
 		private String workRelJust;
-		private Blob eventAttachment;
+		private String eventAttachment;
 		private String workTimeMissed;
 		private double estimatedReimbursement;
 		
@@ -27,18 +28,21 @@ public class EmployeeForm {
 
 		}
 
-		public EmployeeForm(int id, int employeeId, int eventId, Date currDate, Time currTime, Date eventDate,
-				String eventLocation, double eventCost, String description, String gradingFormat, String workRelJust,
-				Blob eventAttachment, String workTimeMissed, double estimatedReimbursement) {
+		public EmployeeForm(int id, String firstName, String lastName, int employeeId, Date currDate, Date eventDate,
+				Time eventTime, String eventLocation, double eventCost, String eventType, String description,
+				String gradingFormat, String workRelJust, String eventAttachment, String workTimeMissed,
+				double estimatedReimbursement) {
 			super();
 			this.id = id;
+			this.firstName = firstName;
+			this.lastName = lastName;
 			this.employeeId = employeeId;
-			this.eventId = eventId;
 			this.currDate = currDate;
-			this.currTime = currTime;
 			this.eventDate = eventDate;
+			this.eventTime = eventTime;
 			this.eventLocation = eventLocation;
 			this.eventCost = eventCost;
+			this.eventType = eventType;
 			this.description = description;
 			this.gradingFormat = gradingFormat;
 			this.workRelJust = workRelJust;
@@ -46,6 +50,7 @@ public class EmployeeForm {
 			this.workTimeMissed = workTimeMissed;
 			this.estimatedReimbursement = estimatedReimbursement;
 		}
+
 
 		public int getId() {
 			return id;
@@ -63,28 +68,12 @@ public class EmployeeForm {
 			this.employeeId = employeeId;
 		}
 
-		public int getEventId() {
-			return eventId;
-		}
-
-		public void setEventId(int eventId) {
-			this.eventId = eventId;
-		}
-
 		public Date getCurrDate() {
 			return currDate;
 		}
 
 		public void setCurrDate(Date currDate) {
 			this.currDate = currDate;
-		}
-
-		public Time getCurrTime() {
-			return currTime;
-		}
-
-		public void setCurrTime(Time currTime) {
-			this.currTime = currTime;
 		}
 
 		public Date getEventDate() {
@@ -135,11 +124,11 @@ public class EmployeeForm {
 			this.workRelJust = workRelJust;
 		}
 
-		public Blob getEventAttachment() {
+		public String getEventAttachment() {
 			return eventAttachment;
 		}
 
-		public void setEventAttachment(Blob eventAttachment) {
+		public void setEventAttachment(String eventAttachment) {
 			this.eventAttachment = eventAttachment;
 		}
 
@@ -159,14 +148,48 @@ public class EmployeeForm {
 			this.estimatedReimbursement = estimatedReimbursement;
 		}
 
+		public String getEventType() {
+			return eventType;
+		}
+
+		public void setEventType(String eventType) {
+			this.eventType = eventType;
+		}
+
+		public Time getEventTime() {
+			return eventTime;
+		}
+
+		public void setEventTime(Time eventTime) {
+			this.eventTime = eventTime;
+		}
+
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+
 		@Override
 		public String toString() {
-			return "EmployeeForm [id=" + id + ", employeeId=" + employeeId + ", eventId=" + eventId + ", currDate="
-					+ currDate + ", currTime=" + currTime + ", eventDate=" + eventDate + ", eventLocation="
-					+ eventLocation + ", eventCost=" + eventCost + ", description=" + description + ", gradingFormat="
-					+ gradingFormat + ", workRelJust=" + workRelJust + ", eventAttachment=" + eventAttachment
-					+ ", workTimeMissed=" + workTimeMissed + ", estimatedReimbursement=" + estimatedReimbursement + "]";
+			return "EmployeeForm [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId="
+					+ employeeId + ", currDate=" + currDate + ", eventDate=" + eventDate + ", eventTime=" + eventTime
+					+ ", eventLocation=" + eventLocation + ", eventCost=" + eventCost + ", eventType=" + eventType
+					+ ", description=" + description + ", gradingFormat=" + gradingFormat + ", workRelJust="
+					+ workRelJust + ", eventAttachment=" + eventAttachment + ", workTimeMissed=" + workTimeMissed
+					+ ", estimatedReimbursement=" + estimatedReimbursement + "]";
 		}
 		
-
 }

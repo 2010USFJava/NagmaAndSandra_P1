@@ -23,11 +23,15 @@
 		<url-pattern>/home</url-pattern>
 		<url-pattern>/employeelogin</url-pattern>
 		<url-pattern>/employeehome</url-pattern>
+		<url-pattern>/employeeinfo</url-pattern>
 		<url-pattern>/employeestatus</url-pattern>
 		<url-pattern>/employeehistory</url-pattern>
 		<url-pattern>/employeeform</url-pattern>
+		<url-pattern>/employeelogout</url-pattern>
 		<url-pattern>/approvallogin</url-pattern>
 		<url-pattern>/approvalhome</url-pattern>
+		<url-pattern>/failure</url-pattern>
+		<url-pattern>/logout</url-pattern>
 		
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
@@ -41,4 +45,8 @@
 		<servlet-name>JSONMasterServlet</servlet-name>
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
+	
+	<session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
 </web-app>

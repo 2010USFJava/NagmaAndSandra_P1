@@ -4,6 +4,8 @@ package com.revature.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import com.revature.dao.EmployeeDao;
 import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.model.Employee;
@@ -11,13 +13,13 @@ import com.revature.model.Employee;
 public class EmployeeService {
 	
 	public static EmployeeDao empdao = new EmployeeDaoImpl();
-	public List<Employee> empList;
+	public List<Employee> empUserList;
 	
 	public boolean loginVerify(String username, String password){
 		
 	try {
 			
-		empList = empdao.getAllEmployees(); 
+		empUserList = empdao.getEmpUserPass(); 
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -25,9 +27,9 @@ public class EmployeeService {
 		
 	
 		boolean verify = false;
-		for(Employee ePerson: empList) {
-			System.out.println("EmployeeService.java: javascript name: " + username + " " + password); //<-- debug notes  This is where the javascript is coming in
-			System.out.println("EmployeeService.java: sql name: " + ePerson.getUsername() + " " + ePerson.getPassword()); //<-- debug notes  sql names
+		for(Employee ePerson: empUserList) {
+			//System.out.println("EmployeeService.java: javascript name: " + username + " " + password); //<-- debug notes  This is where the javascript is coming in
+			//System.out.println("EmployeeService.java: sql name: " + ePerson.getUsername() + " " + ePerson.getPassword()); //<-- debug notes  sql names
 			if(ePerson.getUsername().equals(username)&& ePerson.getPassword().equals(password)) {
 				verify = true;
 			}

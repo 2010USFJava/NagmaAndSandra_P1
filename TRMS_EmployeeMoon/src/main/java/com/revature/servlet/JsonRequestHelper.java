@@ -20,7 +20,7 @@ public class JsonRequestHelper {
 		
 		System.out.println("JsonRequestHelper.java : ");
 		switch(req.getRequestURI()) {	
-			case "/TRMS_NagmaSandra/getsession.json":
+			case "/TRMS_EmployeeMoon/getsession.json":
 			System.out.println("JsonRequestHelper.java : " + "getsession.json");
 			System.out.println("\nConvert to json data...\n");
 			ApprovalController.getSessionApprover(req, res);
