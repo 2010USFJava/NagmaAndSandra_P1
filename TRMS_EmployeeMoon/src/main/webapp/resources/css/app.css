@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+
+/* IDs */
+
+
+#i_employee-table-one-info, #i_employee-table-two-info, #i_employee-table-three-info{
+	padding: 10px;
+}
+
+.c_border{
+	border: thin solid gray;
+}
+.c_margin{
+	margin: 10px;
+}

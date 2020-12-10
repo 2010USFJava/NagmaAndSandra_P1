@@ -9,15 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.CommunicationTableDao;
 import com.revature.dao.EmployeeDao;
+import com.revature.dao.EmployeeFormDao;
+import com.revature.daoimpl.CommunicationTableDaoImpl;
 import com.revature.daoimpl.EmployeeDaoImpl;
+import com.revature.daoimpl.EmployeeFormDaoImpl;
 import com.revature.model.Approval;
+import com.revature.model.CommunicationTable;
 import com.revature.model.Employee;
+import com.revature.model.EmployeeForm;
 
 public class ApprovalController {
 	
 	public static EmployeeDao empdao = new EmployeeDaoImpl(); //Database Code
+	public static EmployeeFormDao empformdao = new EmployeeFormDaoImpl(); //Database Code
+	public static CommunicationTableDao commtable= new CommunicationTableDaoImpl(); //Database Code
 	public static List<Employee> empList;	
+	public static List<EmployeeForm> empFormList;
+	public static List<CommunicationTable> commTableList;
 	
 	public static String approval(HttpServletRequest req) {
 		//System.out.println("ApprovalController: role: " + req.getSession().getAttribute("currentrole"));
@@ -51,7 +61,7 @@ public class ApprovalController {
 		
 	}
 	
-	public static void getSessionApprover(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
+	public static void getApproverSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		System.out.println("ApprovalController, getSessionApprover.java"); //debug code
 		
 		/* Call Employee DAO here to get there information*/
@@ -74,22 +84,52 @@ public class ApprovalController {
 					empList = empdao.getAllEmployees();
 					
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				} // Database info 
-				System.out.println("ApprovalController, getSessionEmployeesjava: eperson = " + empList);
+				System.out.println("ApprovalController, getEmployeesSession: eperson = " + empList);
 				res.getWriter().write(new ObjectMapper().writeValueAsString(empList));
 		
 		/* Sending Employee info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
-		
-		
 	}
 	
-//	public static void getSessionApproverRole(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
-//		Approvals aPersonRole = (Approvals) req.getSession().getAttribute("currentrole");
-//		res.getWriter().write(new ObjectMapper().writeValueAsString(aPersonRole)); //response
-//		
-//	}
-
+	public static void getEmployeesFormSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
+		System.out.println("ApprovalController, getEmployeesFormSession: "); //debug code
+	
+				try {
+					empFormList = empformdao.getAllEmployeesForm();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				} 
+				// Database info 
+				System.out.println("ApprovalController, getEmployeesFormSession: eperson = " + empFormList);
+				res.getWriter().write(new ObjectMapper().writeValueAsString(empFormList));
+		
+		/* Sending Employee Form info to JsonRequestHelper which will convert to json data */
+		System.out.println("\nSending Employee Form info to JsonRequestHelper which will convert to json data...\n");
+	}
+	
+	public static void getCommuncationTableSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
+		System.out.println("ApprovalController, getCommuncationTableSession: "); //debug code
+	
+				try {
+					commTableList = commtable.getAllCommunicationTable();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				} 
+				// Database info 
+				System.out.println("ApprovalController, getCommuncationTableSession: communication-table = " + commTableList);
+				res.getWriter().write(new ObjectMapper().writeValueAsString(commTableList));
+		
+		/* Sending Employee Form info to JsonRequestHelper which will convert to json data */
+		System.out.println("\nSending Communcation Table info to JsonRequestHelper which will convert to json data...\n");
+	}
+	
+	
 }
+

@@ -4,7 +4,7 @@ function getApproval(){
 	
 	
 	// [3] Open a request
-	xhr.open("GET","/TRMS_EmployeeMoon/getsession.json", true);
+	xhr.open("GET","/TRMS_EmployeeMoon/getApproverSession.json", true);
 	//xhr.open("GET",url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
 
