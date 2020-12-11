@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controller.ApprovalController;
+import com.revature.controller.EmployeeController;
 import com.revature.model.Approval;
 
 /*
@@ -16,7 +18,7 @@ import com.revature.model.Approval;
 
 public class JsonRequestHelper {
 	
-	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
+	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException, SQLException{
 		
 		System.out.println("JsonRequestHelper.java : ");
 		switch(req.getRequestURI()) {	
@@ -24,13 +26,18 @@ public class JsonRequestHelper {
 			System.out.println("JsonRequestHelper.java : " + "getsession.json");
 			System.out.println("\nConvert to json data...\n");
 			ApprovalController.getSessionApprover(req, res);
-			
 			break;
 			
-			default:
-				Approval aPerson = new Approval(0,"?","?");
-				res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
-				System.out.println("JsonRequestHelper.java : " + aPerson);
+		case "/TRMS_EmployeeMoon/getOneEmployee.json":  //One Employee INFO json info
+			System.out.println("JsonRequestHelper.java : " + "getOneEmployee.json");
+			System.out.println("\nConvert to json data...\n");
+			EmployeeController.getOneEmployee(req, res);
+				break;
+			
+		default:
+			Approval aPerson = new Approval(0,"?","?");
+			res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
+			System.out.println("JsonRequestHelper.java : " + aPerson);
 			}
 	}
 
