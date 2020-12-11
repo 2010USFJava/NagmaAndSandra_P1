@@ -36,68 +36,219 @@
 
 <h4>Table 2</h4>
 <div id="i_employee-table-two-info" class="c_border c_margin" name="n_employee-table-two-info"> </div>
-<h4>Table 3</h4>
 
+
+
+<h4>Table 3</h4>
 <div id="i_employee-table-three-info" class="c_border c_margin" name="n_employee-table-three-info">    </div>
 
 
-<!--<div>
-1 | <a href="#">Jessie Davis </a>  | EmployeeID  | Date | In Progress <br>
-2 | <a href="#">Batman Johnson</a> | EmployeeID  | Date | In Progress <br>
-3 | <a href="#">Lebron James </a>  | EmployeeID  | Date | In Progress <br>
+<hr>
 
-</div>-->
+	<div id="form">
+				<form id="i_from" action="/TRMS_EmployeeMoon/approvalhome" method="POST">
+                    
+                    <div class="form-group">  <!-- 1 -->
+                        <label for="i_formId">Form Id:</label> 
+                        <input type="text"class="form-control" id="i_formId"
+                         name="n_formId" placeholder="Form Id">
+                    </div>
+
+                    <div class="form-group"> <!-- 2 -->
+                        <label for="i_employeeId">Empoyee Id:</label> 
+                        <input type="text"class="form-control" id="i_employeeId"
+                         name="n_employeeId" placeholder="Empoyee Id">
+					</div>
+                    
+                    
+                    <div class="form-group"> <!-- 3 -->
+                        <label for="i_estimReimbursement">Estimated Reimbursement:</label> 
+                        <input type="text"class="form-control" id="i_estimReimbursement"
+                         name="n_estimReimbursement" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group"> <!-- 4 -->
+                        <label for="i_requestorNeedAdditionalInfoFrom">Request Additional Info:</label> 
+                        <input type="text"class="form-control" id="i_requestorNeedAdditionalInfoFrom"
+                         name="n_requestorNeedAdditionalInfoFrom" placeholder="Request Additional Info">
+                    </div>
+
+                    <div class="form-group"> <!-- 5 -->
+                        <label for="i_requesteeResponse">Requestee Response:</label> 
+                        <input type="text"class="form-control" id="i_requesteeResponse"
+                         name="n_requesteeResponse" placeholder="Requestee Response">
+                    </div>
+
+                    <div class="form-group"> <!-- 6 -->
+                        <label for="i_alteReimbursmentAmount">Alter Reimbursment Amount:</label> 
+                        <input type="text"class="form-control" id="i_alteReimbursmentAmount"
+                         name="n_alteReimbursmentAmounte" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group"> <!-- 7 -->
+                        <label for="i_reasonForLargerAmount">Reason For Larger Amount:</label> 
+                        <input type="text"class="form-control" id="i_reasonForLargerAmount"
+                         name="n_reasonForLargerAmount" placeholder="Reason For Larger Amount">
+                    </div>
+
+                    <div class="form-group"> <!-- 8 -->
+                        <label for="i_exceedingAvailableFunds">Exceeding Available Funds:</label> 
+                        <input type="text"class="form-control" id="i_exceedingAvailableFunds"
+                         name="n_exceedingAvailableFunds" placeholder="Exceeding Available Funds">
+                    </div>
+
+                    <div class="form-group"> <!-- 9 -->
+                        <label for="i_pendingAmountVal">Pending Amount Value:</label> 
+                        <input type="text"class="form-control" id="i_pendingAmountVal"
+                         name="n_pendingAmountVal" placeholder="Pending Amount Value">
+                    </div>
+
+                    <div class="form-group"> <!-- 10 -->
+                        <label for="i_notifyEmployee">Notify Employee:</label> 
+                        <input type="text"class="form-control" id="i_notifyEmployee"
+                         name="n_notifyEmployee" placeholder="Notify Employee">
+                    </div>
+
+                    <div class="form-group"> <!-- 11 -->
+                        <label for="i_employeeOptionToCancel">Employee Option To Cancel</label> 
+                        <input type="text"class="form-control" id="i_employeeOptionToCancel"
+                         name="n_employeeOptionToCancel" placeholder="Employee Option To Cancel">
+                    </div>
+
+                    <div class="form-group"> <!-- 12 -->
+                        <label for="i_approvalStatus">Approval Status</label> 
+                        <input type="text"class="form-control" id="i_approvalStatus"
+                         name="n_approvalStatus" placeholder="Approval Status">
+                    </div>
+
+                    <div class="form-group"> <!-- 13 -->
+                        <label for="i_eventGrade">Event Grade</label> 
+                        <input type="text"class="form-control" id="i_eventGrade"
+                         name="n_eventGrade" placeholder="Event Grade">
+                    </div>
+
+                    <div class="form-group"> <!-- 14 -->
+                        <label for="i_eventPresentation">Event Presentation</label> 
+                        <input type="text"class="form-control" id="i_eventPresentation"
+                         name="n_eventPresentation" placeholder="Event Presentation">
+                    </div>
+
+                    <div class="form-group"> <!-- 15 -->
+                        <label for="i_mgmtViewPresent">Mgmt View Presentation</label> 
+                        <input type="text"class="form-control" id="i_mgmtViewPresent"
+                         name="n_mgmtViewPresent" placeholder="Mgmt View Presentation">
+                    </div>
+
+                    <div class="form-group"> <!-- 16 -->
+                        <label for="i_dirMgrApprPresent">Direct Manager Approve Presentation</label> 
+                        <input type="text"class="form-control" id="i_dirMgrApprPresent"
+                         name="n_dirMgrApprPresent" placeholder="Direct Manager Approve Presentation">
+                    </div>
+
+                    <div class="form-group"> <!-- 17 -->
+                        <label for="i_gradeStatusDirectSup">Grade Status Direct Supervisor</label> 
+                        <input type="text"class="form-control" id="i_gradeStatusDirectSup"
+                         name="n_gradeStatusDirectSup" placeholder="Grade Status Direct Supervisor">
+                    </div>
+
+                    <div class="form-group"> <!-- 18 -->
+                        <label for="i_directSupAppr">Direct Supervisor Approval</label> 
+                        <input type="text"class="form-control" id="i_directSupAppr"
+                         name="n_directSupAppr" placeholder="Direct Supervisor Approval">
+                    </div>
+
+                    <div class="form-group"> <!-- 19 -->
+                        <label for="i_deptHeadAppr">Department Head Approval</label> 
+                        <input type="text"class="form-control" id="i_deptHeadAppr"
+                         name="n_deptHeadAppr" placeholder="Department Head Approval">
+                    </div>
+
+                    <div class="form-group"> <!-- 20 -->
+                        <label for="i_bencoFinalAppr">BenCo Final Approval</label> 
+                        <input type="text"class="form-control" id="i_bencoFinalAppr"
+                         name="n_bencoFinalAppr" placeholder="BenCo Final Approval">
+                    </div>
+                    <div class="form-group"> <!-- 21 -->
+                        <label for="i_finalReimburseValBenco">Final Reimbursement Value</label> 
+                        <input type="text"class="form-control" id="i_finalReimburseValBenco"
+                         name="n_finalReimburseValBenco" placeholder="Final Reimburse Value">
+                    </div>
+
+                    <div class="form-group"> <!-- 22 -->
+                        <label for="i_escalationEmailDirectSup">Escalation Email Direct Supervisor</label> 
+                        <input type="text"class="form-control" id="i_escalationEmailDirectSup"
+                         name="n_escalationEmailDirectSup" placeholder="Escalation Email Direct Supervisor">
+                    </div>
+
+                    <div class="form-group"> <!-- 23 -->
+                        <label for="i_automaticApprovDirectSup">Automatic Approval Direct Supervisor</label> 
+                        <input type="text"class="form-control" id="i_automaticApprovDirectSup"
+                         name="n_automaticApprovDirectSup" placeholder="Automatic Approval Direct Supervisor">
+                    </div>
+
+                    <div class="form-group"> <!-- 24 -->
+                        <label for="i_automaticApprovDeptHead">Automatic Approval Department Head</label> 
+                        <input type="text"class="form-control" id="i_automaticApprovDeptHead"
+                         name="n_automaticApprovDeptHead" placeholder="Automatic Approval Department Head">
+                    </div>
+
+                    <div class="form-group"> <!-- 25 -->
+                        <label for="i_markedUrgent">Marked Urgent</label> 
+                        <input type="text"class="form-control" id="i_markedUrgent"
+                         name="n_markedUrgent" placeholder="Marked Urgent">
+                    </div>
+                    
+					<input type="submit" value="submit">
+                </form>
+     <!--           
+
+                
+                -- BENCO JOB
+                
+                alter_reimbursment_amount double precision, --NAGMA pulls
+                reason_for_larger_amount varchar(50),
+                exceeding_available_funds varchar(10), --(yes/no)
+                
+                pending_amount_val double precision, --NAGMA pulls
+                notify_employee varchar(10), --(yes/no) 
+                employee_option_to_cancel varchar(10), --(yes/no) --NAGMA replies
+                approval_status varchar(10), --(pending/denied/awaiting_response) --NAGMA pulls
+                event_grade varchar(10), --(A/B/C/D/F) --NAGMA replies
+                
+                event_presentation varchar(50), --(opt. upload) --NAGMA replies
+                -- (mgmt & dirmgmt) JOB
+                mgmt_view_present varchar(10), --(yes/no) 
+                dir_mgr_appr_present varchar(10),  --(yes/no) 
+                -- PROCESS 2 (All 3 Approvals)
+                grade_status_direct_sup varchar(10),   --(pass/fail) 
+                direct_sup_appr varchar(10), --(denied/approved)
+                
+                
+                dept_head_appr varchar(10),  --(denied/approved)
+                benco_final_appr varchar(10),  --(denied/approved) --NAGMA pulls
+                final_reimburse_val_benco double precision, -- Store in 4th table position 2 --NAGMA pulls from here
+                
+                
+                -- TRIGGERS 1 (READ ONLY VALUE)
+                escalation_email_direct_sup varchar(10), --(yes/no) (if benco does not approve in 2 weeks)
+                automatic_approv_direct_sup varchar(10), --(yes/no)
+                automatic_approv_dept_head  varchar(10), --(yes/no)
+                marked_urgent varchar(10),--(yes/no)
+                foreign key (employee_id) references employees(empId),
+                foreign key (form_id ) references event_form(form_id)
+                );
+
+            -->
+
+
+		</div>
+
+
+
 
 <hr>
 
-<div>
-<table>
-<tr>
-<td>1</td>
-<th>Tuition Reimbursement</th>
-<td> <input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1">Approved</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value="">  <label for="vehicle1">Denied</label><br> </td>
-</tr>
-
-<tr>
-<td>2</td>
-<th>Requesting Additional Information</th>
-<td> <textarea name="comment" form="usrform">Enter text here...</textarea></td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1"> Employee</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1">  Direct Supervisor</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1"> Department Head</label><br> </td>
-</tr>
-
-<tr>
-<td>3</td>
-<th>Alter the Reimbursement Amount</th>
-<!-- and give them the option to cancel their reimbursement request. -->
-<td><input type="checkbox" id="" name="vehicle1" value=""> <label for="vehicle1">Notify the employee of the change</label><br> </td> 
-</tr>
-
-<tr>
-<td>4</td>
-<th>Alter the Reimbursement Amount</th>
-<!-- [1] and give them the option to cancel their reimbursement request. -->
-<!-- [2] Allowed to award an amount larger than the amount 
-	     available for the employee, but must provide a reason 
-	     for this, and the increase must be marked as exceeding 
-	     available funds. -->
-<td><input type="text" id="" name="vehicle1" value="$1000"> <label for="vehicle1"></label><br> </td> 
-<td><input type="checkbox" id="" name="vehicle1" value=""> <label for="vehicle1">Notified the employee of the change</label><br> </td> 
-</tr>
-
-
-<!-- If not approved in timely matter, an escalation email 
-    should be sent to the BenCo’s Direct Supervisor -->
-
-
-</table>
-</div>
-
-<hr>
-
-
+<p></p>
 <form method="post" action="home">
 	<input type="submit" value="logout"/>
 	</form>

@@ -94,6 +94,7 @@ public class ApprovalController {
 		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
 	}
 	
+	//Table 2
 	public static void getEmployeesFormSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		System.out.println("ApprovalController, getEmployeesFormSession: "); //debug code
 	
@@ -111,9 +112,9 @@ public class ApprovalController {
 		/* Sending Employee Form info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Employee Form info to JsonRequestHelper which will convert to json data...\n");
 	}
-	
+	//Table 3
 	public static void getCommuncationTableSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
-		System.out.println("ApprovalController, getCommuncationTableSession: "); //debug code
+		System.out.println("ApprovalController, getComsmuncationTableSession: "); //debug code
 	
 				try {
 					commTableList = commtable.getAllCommunicationTable();
@@ -128,6 +129,36 @@ public class ApprovalController {
 		
 		/* Sending Employee Form info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Communcation Table info to JsonRequestHelper which will convert to json data...\n");
+	}
+	
+	
+	public static String formData(HttpServletRequest req) {
+		
+		if(!req.getMethod().equals("POST")) {
+		return "resources/html/app_response_form.html";
+		}
+		
+		String empID = req.getParameter("n_formId"); // [1]
+		String employeeId= req.getParameter("n_employeeId"); // [2]
+		String estimReimbursement = req.getParameter("n_estimReimbursement"); // [3]
+		String requestorNeedAdditionalInfoFrom = req.getParameter("n_requestorNeedAdditionalInfoFrom"); // [4]
+		String requesteeResponse = req.getParameter("n_requesteeResponse"); // [5]
+//		String empID = req.getParameter("n_formId"); // [6]
+//		String empID = req.getParameter("n_formId"); // [7]
+//		String empID = req.getParameter("n_formId"); // [8]
+//		String empID = req.getParameter("n_formId"); // [9]
+//		String empID = req.getParameter("n_formId"); // [10]
+//		String empID = req.getParameter("n_formId"); // [11]
+//		String empID = req.getParameter("n_formId"); // [12]
+//		String empID = req.getParameter("n_formId"); // [13]
+		
+		System.out.println("ApprovalController: formData: " + empID);
+		System.out.println("ApprovalController: formData: " + employeeId);
+		System.out.println("ApprovalController: formData: " + estimReimbursement );
+		System.out.println("ApprovalController: formData: " + requestorNeedAdditionalInfoFrom);
+		System.out.println("ApprovalController: formData: " + requesteeResponse);
+		return ApprovalController.approval(req);
+		
 	}
 	
 	

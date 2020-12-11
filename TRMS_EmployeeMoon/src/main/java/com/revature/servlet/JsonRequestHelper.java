@@ -39,7 +39,7 @@ public class JsonRequestHelper {
 				System.out.println("JsonRequestHelper.java : " + "getCommuncationTableSession.json");
 				System.out.println("\nConvert to json data...\n");
 				ApprovalController.getCommuncationTableSession(req, res);
-				break;
+				break; 
 				
 			default:
 				Approval aPerson = new Approval(0,"default","default");

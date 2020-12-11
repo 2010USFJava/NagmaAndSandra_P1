@@ -12,7 +12,7 @@ public class EmployeeForm {
 		private int employeeId;
 		private Date currDate;
 		private Date eventDate;
-		private Time eventTime; 
+		private String eventTime; 
 		private String eventLocation;
 		private double eventCost;
 		private String eventType;
@@ -25,11 +25,11 @@ public class EmployeeForm {
 		
 		public EmployeeForm() {
 			super();
-
+			// TODO Auto-generated constructor stub
 		}
-
+		
 		public EmployeeForm(int id, String firstName, String lastName, int employeeId, Date currDate, Date eventDate,
-				Time eventTime, String eventLocation, double eventCost, String eventType, String description,
+				String eventTime, String eventLocation, double eventCost, String eventType, String description,
 				String gradingFormat, String workRelJust, String eventAttachment, String workTimeMissed,
 				double estimatedReimbursement) {
 			super();
@@ -51,13 +51,28 @@ public class EmployeeForm {
 			this.estimatedReimbursement = estimatedReimbursement;
 		}
 
-
 		public int getId() {
 			return id;
 		}
 
 		public void setId(int id) {
 			this.id = id;
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
 		}
 
 		public int getEmployeeId() {
@@ -84,6 +99,14 @@ public class EmployeeForm {
 			this.eventDate = eventDate;
 		}
 
+		public String getEventTime() {
+			return eventTime;
+		}
+
+		public void setEventTime(String eventTime) {
+			this.eventTime = eventTime;
+		}
+
 		public String getEventLocation() {
 			return eventLocation;
 		}
@@ -98,6 +121,14 @@ public class EmployeeForm {
 
 		public void setEventCost(double eventCost) {
 			this.eventCost = eventCost;
+		}
+
+		public String getEventType() {
+			return eventType;
+		}
+
+		public void setEventType(String eventType) {
+			this.eventType = eventType;
 		}
 
 		public String getDescription() {
@@ -148,40 +179,6 @@ public class EmployeeForm {
 			this.estimatedReimbursement = estimatedReimbursement;
 		}
 
-		public String getEventType() {
-			return eventType;
-		}
-
-		public void setEventType(String eventType) {
-			this.eventType = eventType;
-		}
-
-		public Time getEventTime() {
-			return eventTime;
-		}
-
-		public void setEventTime(Time eventTime) {
-			this.eventTime = eventTime;
-		}
-
-
-		public String getFirstName() {
-			return firstName;
-		}
-
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
-
-		public String getLastName() {
-			return lastName;
-		}
-
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
-
-
 		@Override
 		public String toString() {
 			return "EmployeeForm [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId="
@@ -191,5 +188,7 @@ public class EmployeeForm {
 					+ workRelJust + ", eventAttachment=" + eventAttachment + ", workTimeMissed=" + workTimeMissed
 					+ ", estimatedReimbursement=" + estimatedReimbursement + "]";
 		}
+		
+		
 		
 }

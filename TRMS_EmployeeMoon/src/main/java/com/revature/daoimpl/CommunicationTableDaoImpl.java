@@ -24,9 +24,17 @@ public class CommunicationTableDaoImpl implements CommunicationTableDao{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				//commTableList.add(new EmployeeForm(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getInt(4),rs.getDate(5),rs.getDate(6),rs.getTime(7),rs.getString(8),
-				//		rs.getDouble(9),rs.getString(10),rs.getString(11), rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getDouble(16)));
-			
+				commTableList.add(new CommunicationTable(
+				rs.getInt(1), rs.getInt(2), rs.getDouble(3), 
+				
+				rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7), rs.getString(8),
+				rs.getDouble(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14),
+				
+				rs.getString(15),rs.getString(16),
+				
+				rs.getString(17), rs.getString(18), rs.getString(19), rs.getString(20), rs.getDouble(21),
+				rs.getString(22), rs.getString(23), rs.getString(24), rs.getString(25)));
+	
 			}
 			
 			

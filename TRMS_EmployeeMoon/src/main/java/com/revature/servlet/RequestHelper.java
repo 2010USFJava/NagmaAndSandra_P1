@@ -2,6 +2,7 @@ package com.revature.servlet;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.revature.controller.ApprovalController;
 import com.revature.controller.ApprovalLoginController;
 import com.revature.controller.EmployeeController;
 import com.revature.controller.EmployeeFormController;
@@ -31,7 +32,11 @@ public static String process(HttpServletRequest req) {
 		case "/TRMS_EmployeeMoon/approvallogin": /* This case will display 'login' page for all users */
 			System.out.println("RequestHelp.java : in /approvallogin rhelper");
 			return ApprovalLoginController.login(req);
-		
+			
+		case "/TRMS_EmployeeMoon/approvalhome": /* This case will display 'login' page for all users */
+			System.out.println("RequestHelp.java : in /approvalhome rhelper");
+			return ApprovalController.formData(req);
+			
 		case "/TRMS_EmployeeMoon/employeehome": /* */
 			System.out.println("in /employeehome rhelper");
 			return EmployeeController.employee(req);
@@ -47,8 +52,7 @@ public static String process(HttpServletRequest req) {
 		case "/TRMS_EmployeeMoon/employeeform": /*  */
 			System.out.println("in /employeeform rhelper");
 			//EmployeeLoginController.loginVerified();
-			return EmployeeFormController.verifyLogin(req);	
-			
+			return EmployeeFormController.formData(req);	
 			
 		default:
 			System.out.println("RequestHelp.java : in default case Check RequestHelper.java"); /* 'failure' page displayed */
