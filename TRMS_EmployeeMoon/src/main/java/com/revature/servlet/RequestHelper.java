@@ -39,9 +39,9 @@ public static String process(HttpServletRequest req, HttpServletResponse res) th
 			System.out.println("RequestHelp.java : in /approvallogin rhelper");
 			return ApprovalLoginController.login(req);
 		
-//		case "/TRMS_EmployeeMoon/employeehome": /* */
-//				System.out.println("in /employeehome rhelper");
-//			return EmployeeController.employee(req, res);
+		case "/TRMS_EmployeeMoon/employeehome": /* */
+				System.out.println("in /employeehome rhelper");
+		return EmployeeLoginController.login(req, res);
 		
 		case "/TRMS_EmployeeMoon/employeeinfo": /* */
 			System.out.println("in /employeeinfo rhelper");
@@ -62,6 +62,10 @@ public static String process(HttpServletRequest req, HttpServletResponse res) th
 		case "/TRMS_EmployeeMoon/employeeform": /*  */
 			System.out.println("in /employeeform rhelper");
 			return EmployeeFormController.form(req, res);
+			
+		case "/TRMS_EmployeeMoon/employeeformdata": /*  */
+			System.out.println("in /employeeform rhelper");
+			return EmployeeFormController.formData(req, res);
 			
 		case "/TRMS_EmployeeMoon/logout": /* */
 			System.out.println("in /logout rhelper");

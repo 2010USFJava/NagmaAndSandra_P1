@@ -12,7 +12,7 @@ public class EmployeeForm {
 		private int employeeId;
 		private Date currDate;
 		private Date eventDate;
-		private Time eventTime; 
+		private String eventTime; 
 		private String eventLocation;
 		private double eventCost;
 		private String eventType;
@@ -29,7 +29,7 @@ public class EmployeeForm {
 		}
 
 		public EmployeeForm(int id, String firstName, String lastName, int employeeId, Date currDate, Date eventDate,
-				Time eventTime, String eventLocation, double eventCost, String eventType, String description,
+				String eventTime, String eventLocation, double eventCost, String eventType, String description,
 				String gradingFormat, String workRelJust, String eventAttachment, String workTimeMissed,
 				double estimatedReimbursement) {
 			super();
@@ -156,11 +156,11 @@ public class EmployeeForm {
 			this.eventType = eventType;
 		}
 
-		public Time getEventTime() {
+		public String getEventTime() {
 			return eventTime;
 		}
 
-		public void setEventTime(Time eventTime) {
+		public void setEventTime(String eventTime) {
 			this.eventTime = eventTime;
 		}
 
@@ -181,7 +181,6 @@ public class EmployeeForm {
 			this.lastName = lastName;
 		}
 
-
 		@Override
 		public String toString() {
 			return "EmployeeForm [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId="
@@ -191,5 +190,7 @@ public class EmployeeForm {
 					+ workRelJust + ", eventAttachment=" + eventAttachment + ", workTimeMissed=" + workTimeMissed
 					+ ", estimatedReimbursement=" + estimatedReimbursement + "]";
 		}
+
+
 		
 }

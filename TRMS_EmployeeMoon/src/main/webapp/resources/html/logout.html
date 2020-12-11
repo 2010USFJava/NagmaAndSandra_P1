@@ -9,7 +9,11 @@
 <div>
 <button onclick="window.location.href='/TRMS_EmployeeMoon/home'" id="i_employeeLogin" class="" name="n_employeeLogin"> Home </button>
 </div>
-
-
+<script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+<script type="text/javascript" src="resources/js/employee.js"></script>
 </body>
 </html>

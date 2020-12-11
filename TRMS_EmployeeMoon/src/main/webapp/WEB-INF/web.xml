@@ -27,6 +27,7 @@
 		<url-pattern>/employeestatus</url-pattern>
 		<url-pattern>/employeehistory</url-pattern>
 		<url-pattern>/employeeform</url-pattern>
+		<url-pattern>/employeeformdata</url-pattern>
 		<url-pattern>/employeelogout</url-pattern>
 		<url-pattern>/approvallogin</url-pattern>
 		<url-pattern>/approvalhome</url-pattern>
