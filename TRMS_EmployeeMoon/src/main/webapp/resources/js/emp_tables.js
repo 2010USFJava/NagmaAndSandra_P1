@@ -7,6 +7,7 @@
 window.addEventListener('load', getEmployeesTableOne, false);
 window.addEventListener('load', getEmployeesFormTableTwo, false);
 window.addEventListener('load', getCommunicationTableForm, false);
+//window.addEventListener('load', loadEmp, false);
 
 
 // [A] Table 1 - Employee Info
@@ -80,14 +81,28 @@ function loadEmployeesFormTableTwo(ePerson){
 	let msg2 = '';
 	console.log("emp_table.js : loadEmployeesFormTableTwo(): " + ePerson.length);
 	for(let i = 0; i < tableLength; i++){
+
+			//function loadEmp(){ // sets the identification parameters
+			document.getElementById('i_formId').value = `${ePerson[i].formId}`;
+			document.getElementById('i_employeeId').value = `${ePerson[i].employeeId}`;
+			document.getElementById('i_estimReimbursement').value = `${ePerson[i].estimReimbursement}`;
+		//}
 		
 		
 		msg2 += ' Employee : ' + '<a href="#">' + 
-								`${ePerson[i].id} | ${ePerson[i].firstName} ${ePerson[i].lastName} | ${ePerson[i].employeeId} | 
-								${ePerson[i].currDate} | ${ePerson[i].eventDate} | ${ePerson[i].eventTime} | ${ePerson[i].eventLocation} |
+								`${ePerson[i].id} | ${ePerson[i].firstName} ${ePerson[i].lastName} | ${ePerson[i].employeeId} |` +  '</a>' +
+
+
+								`${ePerson[i].currDate} | ${ePerson[i].eventDate} | ${ePerson[i].eventTime} | ${ePerson[i].eventLocation} |
 								${ePerson[i].eventCost} | ${ePerson[i].eventType} | ${ePerson[i].description} | ${ePerson[i].gradingFormat}  |
-								${ePerson[i].workRelJust} | ${ePerson[i].eventAttachment} | ${ePerson[i].workTimeMissed} | ${ePerson[i].estimatedReimbursement}` +  '</a>' + '<br />';
+								${ePerson[i].workRelJust} | ${ePerson[i].eventAttachment} | ${ePerson[i].workTimeMissed} | ${ePerson[i].estimatedReimbursement}` + '<br /> <hr>';
 		console.log("emp_table.js : loadEmployeesFormTableTwo() Table 2 Lenght: i : " + i);
+
+		
+
+
+
+
 	}
 	document.getElementById("i_employee-table-two-info").innerHTML =  msg2;
 	
@@ -124,6 +139,9 @@ function loadCommunicationTableForm(ePerson){
 	console.log("emp_table.js : loadCommunicationTableForm()  Table 3 Length: " + ePerson.length);
 	for(let i = 0; i < tableLength; i++){
 		
+		
+
+
 		msg3 += ' Employee : ' + '<a href="#">' + 
 							   `${ePerson[i].formId} | 
 							    ${ePerson[i].employeeId} 

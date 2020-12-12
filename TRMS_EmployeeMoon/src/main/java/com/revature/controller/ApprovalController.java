@@ -138,25 +138,60 @@ public class ApprovalController {
 		return "resources/html/app_response_form.html";
 		}
 		
-		String empID = req.getParameter("n_formId"); // [1]
-		String employeeId= req.getParameter("n_employeeId"); // [2]
+
+		String formId = req.getParameter("n_formId"); // [1]
+		String employeeId = req.getParameter("n_employeeId"); // [2]
 		String estimReimbursement = req.getParameter("n_estimReimbursement"); // [3]
 		String requestorNeedAdditionalInfoFrom = req.getParameter("n_requestorNeedAdditionalInfoFrom"); // [4]
 		String requesteeResponse = req.getParameter("n_requesteeResponse"); // [5]
-//		String empID = req.getParameter("n_formId"); // [6]
-//		String empID = req.getParameter("n_formId"); // [7]
-//		String empID = req.getParameter("n_formId"); // [8]
-//		String empID = req.getParameter("n_formId"); // [9]
-//		String empID = req.getParameter("n_formId"); // [10]
-//		String empID = req.getParameter("n_formId"); // [11]
-//		String empID = req.getParameter("n_formId"); // [12]
-//		String empID = req.getParameter("n_formId"); // [13]
+		String alteReimbursmentAmount = req.getParameter("n_alteReimbursmentAmount"); // [6]
+		String reasonForLargerAmount = req.getParameter("n_reasonForLargerAmount"); // [7]
+		String exceedingAvailableFunds = req.getParameter("n_exceedingAvailableFunds"); // [8]
+		String pendingAmountVal= req.getParameter("n_pendingAmountVal"); // [9]
+		String notifyEmployee = req.getParameter("n_notifyEmployee"); // [10]
+		String employeeOptionToCancel = req.getParameter("n_employeeOptionToCancel"); // [11]
+		String approvalStatus = req.getParameter("n_approvalStatus"); // [12]
+		String eventGrade = req.getParameter("n_eventGrade"); // [13]
+		String eventPresentation = req.getParameter("n_eventPresentation"); // [14]
+		String mgmtViewPresent = req.getParameter("n_mgmtViewPresent"); // [15]
+		String dirMgrApprPresent = req.getParameter("n_dirMgrApprPresent"); // [16]
+		String gradeStatusDirectSup = req.getParameter("n_gradeStatusDirectSup"); // [17]
+		String directSupAppr = req.getParameter("n_directSupAppr"); // [18]
+		String deptHeadAppr = req.getParameter("n_deptHeadAppr"); // [19]
+		String bencoFinalAppr = req.getParameter("n_bencoFinalAppr"); // [20]
+		String finalReimburseValBenco = req.getParameter("n_finalReimburseValBenco"); //[21]
+		String escalationEmailDirectSup = req.getParameter("n_escalationEmailDirectSup"); //[22]
+		String automaticApprovDirectSup = req.getParameter("n_automaticApprovDirectSup"); //[23]
+		String automaticApprovDeptHead = req.getParameter("n_automaticApprovDeptHead"); //[24]
+		String markedUrgent = req.getParameter("n_markedUrgent"); //[25]
+
 		
-		System.out.println("ApprovalController: formData: " + empID);
-		System.out.println("ApprovalController: formData: " + employeeId);
-		System.out.println("ApprovalController: formData: " + estimReimbursement );
-		System.out.println("ApprovalController: formData: " + requestorNeedAdditionalInfoFrom);
-		System.out.println("ApprovalController: formData: " + requesteeResponse);
+		System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+		System.out.println("[2] ApprovalController: employeeId : " + employeeId); //[2]
+		System.out.println("[3] ApprovalController: estimReimbursement : " + estimReimbursement ); //[3]
+		System.out.println("[4] ApprovalController: requestorNeedAdditionalInfoFrom : " + requestorNeedAdditionalInfoFrom); //[4]
+		System.out.println("[5] ApprovalController: requesteeResponse " + requesteeResponse); //[5]
+		System.out.println("[6] ApprovalController: alterReimbursmentAmount  :" + alteReimbursmentAmount); //  [6]
+		System.out.println("[7] ApprovalController: reasonForLargerAmount  :" + reasonForLargerAmount); // [7]
+		System.out.println("[8] ApprovalController: exceedingAvailableFunds :" + exceedingAvailableFunds); // [8]
+		System.out.println("[9] ApprovalController: pendingAmountVal  :" + pendingAmountVal); // [9]
+		System.out.println("[10] ApprovalController: notifyEmployee  :" + notifyEmployee); // [10]
+		System.out.println("[11] ApprovalController: employeeOptionToCancel  :" + employeeOptionToCancel); // [11]
+		System.out.println("[12] ApprovalController: approvalStatus : " + approvalStatus); // [12]
+		System.out.println("[13] ApprovalController: eventGrade : " + eventGrade); // [13]
+		System.out.println("[14] ApprovalController: eventPresentation : " + eventPresentation); // [14]
+		System.out.println("[15] ApprovalController: mgmtViewPresent : " + mgmtViewPresent); // [15]
+		System.out.println("[16] ApprovalController: dirMgrApprPresent : " + dirMgrApprPresent); // [16]
+		System.out.println("[17] ApprovalController: gradeStatusDirectSup : " + gradeStatusDirectSup); // [17]
+		System.out.println("[18] ApprovalController: directSupAppr : " + directSupAppr); // [18]
+		System.out.println("[19] ApprovalController: deptHeadAppr : " + deptHeadAppr); // [19]
+		System.out.println("[20] ApprovalController: bencoFinalAppr : " + bencoFinalAppr); // [20]
+		System.out.println("[21] ApprovalController: finalReimburseValBenco : " + finalReimburseValBenco); // [21]
+		System.out.println("[22] ApprovalController: escalationEmailDirectSup : " + escalationEmailDirectSup); // [22] 
+		System.out.println("[23] ApprovalController: automaticApprovDirectSup : " + automaticApprovDirectSup); // [23]
+		System.out.println("[24] ApprovalController: automaticApprovDeptHead : " + automaticApprovDeptHead); // [24]
+		System.out.println("[25] ApprovalController: markedUrgent  : " + markedUrgent); // [25]
+
 		return ApprovalController.approval(req);
 		
 	}

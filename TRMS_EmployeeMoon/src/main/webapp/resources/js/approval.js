@@ -1,3 +1,5 @@
+// RETURNS THE TYPE OF APPROVER
+
 function getApproval(){	
 	// [1] Create new xhr object 
 	var xhr = new XMLHttpRequest();

@@ -14,3 +14,10 @@
 .c_margin{
 	margin: 10px;
 }
+
+p.c_formNotes{
+	color: darkslategray;
+	font-size: smaller;
+	margin: 0;
+	
+}
