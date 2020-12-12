@@ -1,16 +1,31 @@
 package com.revature.controller;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDao;
+import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.daoimpl.EmployeeFormDaoImpl;
+import com.revature.model.Employee;
 import com.revature.model.EmployeeForm;
 
 public class EmployeeFormController {
+	
+	public static EmployeeDao empdao = new EmployeeDaoImpl();
+	public static Employee emp = new Employee();
+	public static EmployeeFormDaoImpl empformdao = new EmployeeFormDaoImpl();
+	public static EmployeeForm empform = new EmployeeForm();
+	public static List<EmployeeForm> empFormByEmp;
+	
 	public static String form(HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("-----FORM CONTROLLER----");
 		String cookie_user = null;
@@ -35,15 +50,16 @@ public class EmployeeFormController {
 	
 	public static String formData(HttpServletRequest req, HttpServletResponse res) 
 	{
+		System.out.println("-----FORM CONTROLLER/ FORM DATA METHOD----");
 		if(!req.getMethod().equals("POST")) 
 		{
 			return "resources/html/emp_form.html";
 		}
 		
-		String v = req.getParameter("n_eventType");	
+		String value = req.getParameter("n_eventType");	
 		String eventType = null;
 		
-		switch(v) 
+		switch(value) 
 		{
 		case "200":
 	       eventType = "University Course";
@@ -73,12 +89,36 @@ public class EmployeeFormController {
 				req.getParameter("n_workRelJust"), req.getParameter("n_eventAttachment"), req.getParameter("n_workTimeMissed"),
 				Double.parseDouble(req.getParameter("n_estimatedReimbursement")));
 		
-		EmployeeFormDaoImpl edi = new EmployeeFormDaoImpl();
-		edi.saveEmployeeForm(ef);
+		empformdao.saveEmployeeForm(ef);
 
 		
 //		return 
 		
 		return EmployeeController.employee(req, res);	
 	}
+	
+	public static void getEmployeeForm(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException, SQLException{
+		System.out.println("EmployeeFormController, getEmployeeForm.java"); //debug code
+			
+				String username = null;
+				Cookie[] cookies= req.getCookies();
+				if(cookies != null) {	
+					for(Cookie cookie : cookies){
+				
+					if(cookie.getName().equals("user")) {
+					username = cookie.getValue();
+					System.out.println(username);
+					System.out.println(cookie.getName().equals("user")); } }} //boolean to confirm cookie exists
+				
+				emp = empdao.getEmployeeByName(username);
+				int empId = emp.getEmpId();
+				System.out.println(empId);
+				empFormByEmp = empformdao.getAllFormsByEmp(empId);
+				System.out.println("EmployeeFormController, getEmployeeForm: epersonForms = " + empFormByEmp);
+				res.getWriter().write(new ObjectMapper().writeValueAsString(empFormByEmp));
+		
+		/* Sending Employee info to JsonRequestHelper which will convert to json data */
+		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
+	}
+	
 }

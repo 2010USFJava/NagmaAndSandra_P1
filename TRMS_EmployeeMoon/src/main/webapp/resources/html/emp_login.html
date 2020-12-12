@@ -1,27 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Employee Login</title>
+  <title>Employee Moon</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="c_">
-
-<h3>Employee Login</h3>
-		<form method="post" action="/TRMS_EmployeeMoon/employeelogin">
-			<p> Please login</p>
-			<input placeholder="Username" name="n_emp_user">
-			<input placeholder="Password" name = "n_emp_pass">
-			<button type="submit" value="login" id="login">Login</button>
-		</form>
-		
-</div>
-
 <div>
-<button onclick="window.location.href='/TRMS_EmployeeMoon/home'" id="i_employeeLogin" class="" name="n_employeeLogin"> Home </button>
+  <div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" class="active"
+						href="/TRMS_EmployeeMoon/home">Employee Moon Portal</a>
+        </div>
+      </div>
+      <br>
+
+<div class="container">
+  <h2>Employee Login</h2>
+  <form method="post" action="/TRMS_EmployeeMoon/employeelogin">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input id="userName" type="text" class="form-control" name="n_emp_user" placeholder="Username">
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input id="password" type="password" class="form-control" name="n_emp_pass" placeholder="Password">
+      </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button id="login" type="submit" class="btn btn-default">Submit</button>
+  </form>
 </div>
-
-
 </body>
 </html>

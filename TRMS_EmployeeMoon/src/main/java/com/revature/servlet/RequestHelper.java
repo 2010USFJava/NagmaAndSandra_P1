@@ -10,7 +10,6 @@ import com.revature.controller.ApprovalLoginController;
 import com.revature.controller.EmployeeController;
 import com.revature.controller.EmployeeFormController;
 import com.revature.controller.EmployeeHistoryController;
-import com.revature.controller.EmployeeHistoryController2;
 import com.revature.controller.EmployeeInfoController;
 import com.revature.controller.EmployeeLoginController;
 import com.revature.controller.EmployeeStatusController;
@@ -40,16 +39,16 @@ public static String process(HttpServletRequest req, HttpServletResponse res) th
 			return ApprovalLoginController.login(req);
 		
 		case "/TRMS_EmployeeMoon/employeehome": /* */
-				System.out.println("in /employeehome rhelper");
-		return EmployeeLoginController.login(req, res);
+			System.out.println("in /employeehome rhelper");
+			return EmployeeLoginController.login(req, res);
 		
 		case "/TRMS_EmployeeMoon/employeeinfo": /* */
 			System.out.println("in /employeeinfo rhelper");
-		return EmployeeInfoController.info(req, res);
+			return EmployeeInfoController.info(req, res);
 		
 		case "/TRMS_EmployeeMoon/employeelogout": /* */
 			System.out.println("in /employeelogout rhelper");
-		return EmpolyeeLogoutController.logout(req, res);
+			return EmpolyeeLogoutController.logout(req, res);
 	
 		case "/TRMS_EmployeeMoon/employeestatus": /* */
 			System.out.println("in /employeestatus rhelper");
@@ -67,9 +66,13 @@ public static String process(HttpServletRequest req, HttpServletResponse res) th
 			System.out.println("in /employeeform rhelper");
 			return EmployeeFormController.formData(req, res);
 			
+		case "/TRMS_EmployeeMoon/employeestatusresponse": /*  */
+			System.out.println("in /employeestatus rhelper");
+			return EmployeeStatusController.status(req, res);
+			
 		case "/TRMS_EmployeeMoon/logout": /* */
 			System.out.println("in /logout rhelper");
-		return LogoutController.logout(req, res);
+			return LogoutController.logout(req, res);
 			
 		case "TRMS_EmployeeMoon/failure":
 			System.out.println("RequestHelp.java : in default case Check RequestHelper.java"); /* 'failure' page displayed */
