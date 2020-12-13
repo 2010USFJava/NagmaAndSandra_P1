@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>TRMS - Home</title>
-<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+<title>Employee Moon Staffing</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="emp_form.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<style>
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('resources/img/moonlight.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
 </head>
-<body>
-<!-- Tuition Reimbursement Management System -->
 
-<center><p>Tuition Reimbursement Management System</p></center>
-<p></p>
-<div id="i_employeePortal" class="c_portal-structure">
-<h2> Employee Portal</h2>
-&nbsp; &nbsp; 
-<button onclick="window.location.href='/TRMS_EmployeeMoon/employeelogin'" id="i_employeeLogin" class="" name="n_employeeLogin"> Login </button>
+<body>    
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p style="background: rgb(176, 176, 179);">Employee Moon Staffing</p>
+  </div>
+  <div class="w3-display-topleft w3-container w3-xlarge">
+
+    <p><a class="w3-button w3-black" href="http://localhost:8080/TRMS_EmployeeMoon/employeelogin">
+      Employee Portal</button></a></p>
+
+    <p><a class="w3-button w3-black" href="http://localhost:8080/TRMS_EmployeeMoon/approvallogin">
+        Approval Portal</button></a></p>    
+  </div>
+  <div class="w3-display-bottomleft w3-container">
+    <h2 class="w3-xlarge">Lighting the way to your future</h2>
+    
+    <ul>Apply Today!</ul>
+    <li>Free Health Insurance</li>
+    <li>Employee Tution Reimbursement</li>
+  </div>
+
+  
 </div>
-
-<p></p>
-
-<hr>
-
-<p></p>
-
-<div id="i_approvalPortal" class="c_portal-structure">
-<h2> Approval Portal</h2>
-
-<a href="http://localhost:8080/TRMS_EmployeeMoon/approvallogin">
-	<button type="submit" id="i_approverLogin" class="" name="n_approverLogin" >Login</button>
-</a>
-
-
-</div>
-
 </body>
 </html>

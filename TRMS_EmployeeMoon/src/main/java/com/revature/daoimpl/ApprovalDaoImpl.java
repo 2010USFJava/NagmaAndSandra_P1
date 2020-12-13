@@ -38,6 +38,25 @@ public class ApprovalDaoImpl implements ApprovalDao{
 		return approvalList;
 	}
 	
+	public List<Approval> getAllApproversInfo(){ // getAllApprovers()
+		Connection conn = cf.getConnection();
+		List<Approval> approvalList = new ArrayList<Approval>();
+		
+		try {
+			//Connection conn = DriverManager.getConnection(this.url,this.username, this.password);
+			String sql = "select * from approvers";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				approvalList.add(new Approval(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return approvalList;
+	}
+	
 
 	public void insertApprover(Approval aPerson) {
 		Connection conn = cf.getConnection();

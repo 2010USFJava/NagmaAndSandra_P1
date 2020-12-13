@@ -7,11 +7,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.ApprovalDao;
 import com.revature.dao.CommunicationTableDao;
 import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeFormDao;
+import com.revature.daoimpl.ApprovalDaoImpl;
 import com.revature.daoimpl.CommunicationTableDaoImpl;
 import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.daoimpl.EmployeeFormDaoImpl;
@@ -21,13 +24,15 @@ import com.revature.model.Employee;
 import com.revature.model.EmployeeForm;
 
 public class ApprovalController {
-	
+	public static ApprovalDao appdao = new ApprovalDaoImpl(); //Database Code
 	public static EmployeeDao empdao = new EmployeeDaoImpl(); //Database Code
 	public static EmployeeFormDao empformdao = new EmployeeFormDaoImpl(); //Database Code
-	public static CommunicationTableDao commtable= new CommunicationTableDaoImpl(); //Database Code
+	public static CommunicationTableDao commtabledao= new CommunicationTableDaoImpl(); //Database Code
+	public static List<Approval> appList;
 	public static List<Employee> empList;	
 	public static List<EmployeeForm> empFormList;
 	public static List<CommunicationTable> commTableList;
+	
 	
 	public static String approval(HttpServletRequest req) {
 		//System.out.println("ApprovalController: role: " + req.getSession().getAttribute("currentrole"));
@@ -65,14 +70,21 @@ public class ApprovalController {
 		System.out.println("ApprovalController, getSessionApprover.java"); //debug code
 		
 		/* Call Employee DAO here to get there information*/
-		Approval aPerson = new Approval(1,2,"benco", "password");
+		//Approval aPerson = new Approval(1,2,"benco", "password");
 		
+		try {
+			appList = appdao.getAllApproversInfo();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} // Database info 
 		
-		System.out.println("ApprovalController, getSessionApprover.java: aperson = " + aPerson ); //debug code
+		System.out.println("ApprovalController, getSessionApprover.java: aperson = " + appList ); //debug code
 		
 		/* Sending Employee info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Employee info to JsonRequestHelper which will convert to json data...\n");
-		res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
+		res.getWriter().write(new ObjectMapper().writeValueAsString(appList));
 		
 	}
 	
@@ -113,11 +125,12 @@ public class ApprovalController {
 		System.out.println("\nSending Employee Form info to JsonRequestHelper which will convert to json data...\n");
 	}
 	//Table 3
+	@JsonIgnore
 	public static void getCommuncationTableSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		System.out.println("ApprovalController, getComsmuncationTableSession: "); //debug code
 	
 				try {
-					commTableList = commtable.getAllCommunicationTable();
+					commTableList = commtabledao.getAllCommunicationTable();
 					
 				} catch (SQLException e) {
 					
@@ -164,6 +177,45 @@ public class ApprovalController {
 		String automaticApprovDirectSup = req.getParameter("n_automaticApprovDirectSup"); //[23]
 		String automaticApprovDeptHead = req.getParameter("n_automaticApprovDeptHead"); //[24]
 		String markedUrgent = req.getParameter("n_markedUrgent"); //[25]
+		
+		CommunicationTable ePerson = new CommunicationTable(
+				Integer.parseInt(req.getParameter("n_formId")), 
+				Integer.parseInt(req.getParameter("n_employeeId")) , 
+				Double.parseDouble(req.getParameter("n_estimReimbursement")) , 
+				req.getParameter("n_requestorNeedAdditionalInfoFrom") , 
+				req.getParameter("n_requesteeResponse") , 
+				Double.parseDouble(req.getParameter("n_alteReimbursmentAmount")) ,
+				req.getParameter("n_reasonForLargerAmount") , 
+				req.getParameter("n_exceedingAvailableFunds") ,
+				Double.parseDouble(req.getParameter("n_pendingAmountVal")), 
+				req.getParameter("n_notifyEmployee"), 
+				req.getParameter("n_employeeOptionToCancel") , 
+				req.getParameter("n_approvalStatus"), 
+				req.getParameter("n_eventGrade"), 
+				req.getParameter("n_eventPresentation"),
+				req.getParameter("n_mgmtViewPresent"),
+				req.getParameter("n_dirMgrApprPresent"), 
+				req.getParameter("n_gradeStatusDirectSup") , 
+				req.getParameter("n_directSupAppr"), 
+				req.getParameter("n_deptHeadAppr"), 
+				req.getParameter("n_bencoFinalAppr") , 
+				Double.parseDouble(req.getParameter("n_finalReimburseValBenco")), 
+				req.getParameter("n_escalationEmailDirectup") ,
+				req.getParameter("n_automaticApprovDirectSup") ,
+				req.getParameter("n_automaticApprovDeptHead") ,
+				req.getParameter("n_markedUrgent"));
+		
+	
+			try {
+				commtabledao.insertIntoCommunicationForm(ePerson);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
+
+		
 
 		
 		System.out.println("[1] ApprovalController: formId : " + formId); //[1]

@@ -1,5 +1,7 @@
 // RETURNS THE TYPE OF APPROVER
 
+window.addEventListener('load', getApproval, false)
+
 function getApproval(){	
 	// [1] Create new xhr object 
 	var xhr = new XMLHttpRequest();
@@ -7,7 +9,6 @@ function getApproval(){
 	
 	// [3] Open a request
 	xhr.open("GET","/TRMS_EmployeeMoon/getApproverSession.json", true);
-	//xhr.open("GET",url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
 
 
@@ -28,11 +29,28 @@ function getApproval(){
 }
 
 function loadApprover(aPerson){
-    document.getElementById("i_approver").innerHTML = aPerson.username;
-   
-}
 
-window.addEventListener('load', getApproval, false);
+			// Read role out to the screen update2]
+			
+			if(document.getElementById('i_benco')){
+				document.getElementById('i_benco').innerHTML = 'Benefits Coordinator';
+			}
+			if(document.getElementById('i_dirsup')){
+				document.getElementById('i_dirsup').innerHTML = 'Direct Supervisor';
+			}
+			if(document.getElementById('i_dirhead')){
+				document.getElementById('i_dirhead').innerHTML = 'Direct Head';
+			}
+			if(document.getElementById('i_dirmgmt')){
+				document.getElementById('i_dirmgmt').innerHTML = 'Direct Management';
+			}
+			if(document.getElementById('i_mgmt')){
+				document.getElementById('i_mgmt').innerHTML = 'Management';
+			}
+		}	
+
+
+//window.addEventListener('load', getApproval, false);
     // [1] click,load       : event
      // [2] xhr function     : getApproval
     // [3] The use capture  : bubble or capture

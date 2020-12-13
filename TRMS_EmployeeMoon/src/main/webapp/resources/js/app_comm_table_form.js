@@ -23,6 +23,7 @@ function eventFunction(){
     }
     
     document.getElementById('i_pendingAmountVal').value = alteReimbursmentAmount;
+    document.getElementById('i_finalReimburseValBenco').value = alteReimbursmentAmount;
     document.getElementById('i_alteReimbursmentAmount').value = alteReimbursmentAmount;
 
 

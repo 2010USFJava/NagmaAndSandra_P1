@@ -12,6 +12,7 @@ public interface ApprovalDao {
 
 	public void insertApprover(Approval aPerson)  throws SQLException;
 	public List<Approval> getAllApprovers() throws SQLException;
+	public List<Approval> getAllApproversInfo() throws SQLException; 
     public Approval getApproverByName(String username) throws SQLException;
     //public void deleteUser(Register p) throws SQLException;
     //public void registerCustomer(Register p) throws SQLException;

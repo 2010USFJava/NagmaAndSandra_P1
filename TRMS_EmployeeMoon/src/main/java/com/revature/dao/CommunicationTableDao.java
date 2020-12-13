@@ -9,4 +9,7 @@ public interface CommunicationTableDao {
 
 	
 	List<CommunicationTable> getAllCommunicationTable() throws SQLException;
+	public void insertIntoCommunicationForm(CommunicationTable ePerson) throws SQLException;
+	
+			
 }

@@ -42,9 +42,9 @@ public class JsonRequestHelper {
 				break; 
 				
 			default:
-				Approval aPerson = new Approval(0,"default","default");
-				res.getWriter().write(new ObjectMapper().writeValueAsString(aPerson));
-				System.out.println("JsonRequestHelper.java Default : " + aPerson);
+				//Approval aPerson = new Approval(0,"default","default");
+				//res.getWriter().write(new ObjectMapper().writeValueAsString('default json'));
+				System.out.println("JsonRequestHelper.java Default : " + "default");
 			}
 	}
 

@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeFormDao;
 import com.revature.model.EmployeeForm;
 import com.revature.util.ConnFactory;
