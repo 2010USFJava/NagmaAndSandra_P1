@@ -36,6 +36,12 @@ public class JsonRequestHelper {
 			System.out.println("\nConvert to json data...\n");
 			EmployeeController.getOneEmployee(req, res);
 				break;
+		
+		case "/TRMS_EmployeeMoon/getBalById.json":  //One Employee INFO json info
+			System.out.println("JsonRequestHelper.java : " + "getOneEmployee.json");
+			System.out.println("\nConvert to json data...\n");
+			EmployeeController.getBalById(req, res);
+				break;
 				
 		case "/TRMS_EmployeeMoon/getAllFormsByEmp.json":  //One Employee INFO json info
 			System.out.println("JsonRequestHelper.java : " + "getOneEmployee.json");

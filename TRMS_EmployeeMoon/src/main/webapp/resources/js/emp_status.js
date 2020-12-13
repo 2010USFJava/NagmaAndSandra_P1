@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	$("#main").hide();
+	//$(".form").hide();
+	});
 function getAllFormsByEmp() {
 
  	console.log("form table request");
@@ -28,6 +32,7 @@ function getAllFormsByEmp() {
     }
 
 function loadForms(eForms) {
+	var xhr = 
 	
 	$("#i_reimburse_info").empty();
 	for (var i = 0; i < eForms.length; i++) { 
@@ -45,11 +50,11 @@ function loadForms(eForms) {
 		console.log(eventTime);
 		
 		var id = eForms[i].id;
-		getStatus(id);
-
+		
+			getStatus(id);
 
             let div = $("<div>").addClass("column").attr("id", "formbox");
-            let h3 = $("<h3>").attr("id", "i_infoHeader").text("Form Information");
+            let h3 = $("<h3>").attr("id", "i_infoHeader")
             let div2 = $("<div>").addClass("callout");
             let table = $("<table>").addClass("table");
             let tr1 = $("<tr>").attr("id", "i_form_id");
@@ -78,13 +83,13 @@ function loadForms(eForms) {
             let th12 = $("<td>").text("Work Time Missed: " + eForms[i].workTimeMissed);
 			let tr13 = $("<tr>").attr("id", "i_est_reimburse");
             let th13 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
-			//let button = $("<input>").attr("type", "Submit").attr("value", "View Status");
-			//var button = $("<button>").attr("id", "status").attr("value", "submit").click(getStatus(id)).text("View Status").bind('onclick', getStatus, false);
+			let tr14 = $("<tr>").attr("id", "i_est_reimburse");
+            let th14 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
+			let tr15 = $("<tr>").attr("id", "i_est_reimburse");
+            let th15 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
 			let br = $("<br>");
 			let hr = $("<hr>")
-			let div3 = $("<div>").addClass("column");
-			
-		
+			let div3 = $("<div>").addClass("column").attr("id", "formStatus").text("");
 		
             div.append(h3);
             div.append(div2);
@@ -118,8 +123,15 @@ function loadForms(eForms) {
             table.append(th12);
 			table.append(tr13);
             table.append(th13);
+			table.append(tr14);
+            table.append(th14);
+			table.append(tr15);
+            table.append(th15);
+			div2.append(div3);
+
 
             $("#i_reimburse_info").append(div);
+
 	}
 
 	function getStatus(id) {
@@ -138,10 +150,9 @@ function loadForms(eForms) {
 		xhr.onreadystatechange = function(){
 		console.log("inside onreadystate");
 		if(xhr.readyState == 4 && xhr.status == 200){
-			let eStatus = JSON.parse(xhr.responseText); //context
+			var eStatus = JSON.parse(xhr.responseText); //context
 			console.log("eStatus: " + JSON.parse(xhr.responseText));
-			selectStatus(eStatus);
-			console.log(eStatus[0].formId);
+			loadStatus(eStatus);
 			}
 		}
 	
@@ -149,15 +160,79 @@ function loadForms(eForms) {
 	
 	    // [4] Send request
 	    xhr.send();
+		
     }
 
-	function selectStatus(eStatus) {
-		for (var i = 0; i < eStatus.length; i++) { 
+	function loadStatus(eStatus){
+			
+			var form = [];
+			for (var i = 0; i < eStatus.length; i++) {
+				var commid = eStatus[i].formId;
+				if(commid == id) {
+					form.push(eStatus[i]);
+					console.log(form);
+				} else {
+					console.log("No");
+				}
+			}
+			
+			//console.log(eStatus[i].formId);
+			//console.log(id);
+			var fid = form[0].formId;
+			document.getElementById("formid").value = fid;
+
+			var p = $("<p>").attr("id", "i_reimburse_status");
+			console.log(form[0].approvalStatus);
+			
+					switch(form[0].approvalStatus) {
+					case "Awaiting Response":
+						console.log("Awaiting Response");
+						p.text("Reimbursement Status: " + form[0].approvalStatus);
+						var p2 = $("<p>").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						$("#formStatus").append(p);
+						$("#formStatus").append(p2);
+						$("#main").show();
+						console.log(form[0].formId);
+						console.log("Awaiting Response");
+					break;
+					
+					case "Approved":
+						$("#main").hide();
+						p.text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#formStatus").append(p);
+						
+						console.log("Reimbursement Approved");
+					break;
+					
+					case "pending":
+						$("#main").hide();
+						p.text("Reimbursement Status: " + form[0].approvalStatus);
+						var p2 = $("<p>").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						var p3 = $("<p>").text("Tuition Reimbursement is awaiting final approval. Please check back later for an update.");
+						$("#formStatus").append(p);
+						$("#formStatus").append(p2);
+						$("#formStatus").append(p3);
+						
+						console.log(form[0].formId);
+						console.log("Pending");
+					break;
+					
+					case "Denied":
+						$("#main").hide();
+						p.text("Reimbursement Status: " + form[0].approvalStatus);
+						var p2 = $("<p>").text("Tuition Reimbursement denied.");
+						$("#formStatus").append(p);
+						$("#formStatus").append(p2);
+						
+						console.log("Reimbursement Denied");
+					break;
+					
+					default:
+						console.log("Default");
+				
+				}
 		}
-};
-
-
-}
+	}
 
    
   	window.addEventListener('load', getAllFormsByEmp, false);

@@ -79,6 +79,18 @@ public class CommunicationTable {
 		this.markedUrgent = markedUrgent;
 	}
 
+	
+	
+	public CommunicationTable(String requesteeResponse, String employeeOptionToCancel, String eventGrade,
+			String eventPresentation, int formId) {
+		super();
+		this.formId = formId;
+		this.requesteeResponse = requesteeResponse;
+		this.employeeOptionToCancel = employeeOptionToCancel;
+		this.eventGrade = eventGrade;
+		this.eventPresentation = eventPresentation;
+	}
+
 	public int getFormId() {
 		return formId;
 	}

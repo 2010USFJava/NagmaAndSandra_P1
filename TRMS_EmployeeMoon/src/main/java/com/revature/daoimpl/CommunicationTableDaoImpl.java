@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.controller.EmployeeController;
 import com.revature.dao.CommunicationTableDao;
 import com.revature.model.CommunicationTable;
 import com.revature.util.ConnFactory;
@@ -14,6 +15,7 @@ import com.revature.util.ConnFactory;
 public class CommunicationTableDaoImpl implements CommunicationTableDao{
 	
 	public static ConnFactory cf = ConnFactory.getInstance();
+	
 	
 	public List<CommunicationTable> getAllCommunicationTable(){ // getAllEmployees()
 		Connection conn = cf.getConnection();
@@ -46,4 +48,26 @@ public class CommunicationTableDaoImpl implements CommunicationTableDao{
 		return commTableList;
 	}
 	
+	public CommunicationTable updateCommTable(CommunicationTable commTable) {
+		Connection conn = cf.getConnection();
+		
+		try {
+			String sql = "update communication_table set requestee_response=?, employee_option_to_cancel=?, event_grade=?, event_presentation=? where form_id=?;";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, commTable.getRequesteeResponse());
+			ps.setString(2, commTable.getEmployeeOptionToCancel());
+			ps.setString(3, commTable.getEventGrade());
+			ps.setString(4, commTable.getEventPresentation());
+			ps.setInt(5, commTable.getFormId());
+			ps.execute();
+			
+			}
+			catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return commTable;
+		
+	}
 }

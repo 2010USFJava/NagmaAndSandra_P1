@@ -3,6 +3,7 @@ package com.revature.model;
 public class BalanceInfo {
 	
 		private int empId;
+		private double initalBal;
 		private double availBal;
 		
 		public BalanceInfo() {
@@ -12,6 +13,13 @@ public class BalanceInfo {
 		public BalanceInfo(int empId, double availBal) {
 			super();
 			this.empId = empId;
+			this.availBal = availBal;
+		}
+
+		public BalanceInfo(int empId, double initalBal, double availBal) {
+			super();
+			this.empId = empId;
+			this.initalBal = initalBal;
 			this.availBal = availBal;
 		}
 
@@ -34,5 +42,13 @@ public class BalanceInfo {
 		@Override
 		public String toString() {
 			return "BalanceInfo [empId=" + empId + ", availBal=" + availBal + "]";
+		}
+
+		public double getInitalBal() {
+			return initalBal;
+		}
+
+		public void setInitalBal(double initalBal) {
+			this.initalBal = initalBal;
 		}
 }

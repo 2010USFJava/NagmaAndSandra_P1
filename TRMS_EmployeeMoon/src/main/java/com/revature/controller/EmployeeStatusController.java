@@ -16,7 +16,7 @@ import com.revature.model.CommunicationTable;
 
 public class EmployeeStatusController {
 	
-	public static CommunicationTableDao commtable = new CommunicationTableDaoImpl(); //Database Code
+	public static CommunicationTableDaoImpl commtableimpl = new CommunicationTableDaoImpl(); //Database Code
 	public static List<CommunicationTable> commTableList;
 	
 	public static String status(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -45,18 +45,33 @@ public class EmployeeStatusController {
 	public static void getCommuncationTableSession(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
 		System.out.println("EmployeeStatusController, getCommuncationTableSession: "); //debug code
 	
-				try {
-					commTableList = commtable.getAllCommunicationTable();
-					
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				} 
+				commTableList = commtableimpl.getAllCommunicationTable(); 
 				// Database info 
 				System.out.println("StatusController, getCommuncationTableSession: communication-table = " + commTableList);
 				res.getWriter().write(new ObjectMapper().writeValueAsString(commTableList));
 		
 		/* Sending Employee Form info to JsonRequestHelper which will convert to json data */
 		System.out.println("\nSending Communcation Table info to JsonRequestHelper which will convert to json data...\n");
+	}
+	
+	public static String statusResponse(HttpServletRequest req, HttpServletResponse res) {
+		
+		if(!req.getMethod().equals("POST")) {
+		return "resources/html/employeestatus.html";
+		}
+		
+
+		int formId = Integer.parseInt(req.getParameter("n_form_id")); // [1]
+		String addInfo = req.getParameter("n_addInfo"); // [5]
+		String appOrCancel = req.getParameter("n_approve"); // [11]
+		String eventGrade = req.getParameter("n_grade"); // [13]
+		String eventPresentation = req.getParameter("n_file"); // [14]
+
+		CommunicationTable commTable = new CommunicationTable(addInfo, appOrCancel, eventGrade, eventPresentation, formId);
+		
+		commtableimpl.updateCommTable(commTable);
+		
+		return EmployeeController.employee(req, res);
+		
 	}
 }
