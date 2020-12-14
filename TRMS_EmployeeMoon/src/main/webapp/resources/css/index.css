@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+
+/* IDs */
+
+
+#i_employeePortal{
+
+}
+
+#i_employeeRegister{}
+#i_employeeLogin{}
+
+#i_approvalPortal{
+
+}
+
+#i_approverLogin{}
+
+/* Classes */
+.c_portal-structure{
+	margin: 0 auto;
+	width: 400px;
+	border: medium solid gray;
+	padding: 0 10px 15px 10px;
+	text-align: center;
+}
+
+/* Elements */
+
+hr{
+	width: 70%;
+	border-top: medium solid #E2E1E1;
+}
+
+h2, .c_portal-structure{
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	color: #036;
+
+}
+button{
+	border-radius: 8px;
+	border: none;
+	padding: 10px 30px;
+	cursor: pointer;
+	font-size:14px;
+	color: #FFF;
+	font-weight: bold;
+	background: #036; /* Dark Blue*/
+}
+button:hover{
+	padding: 10px 31px;
+	background: #FFA500; /* Orange */
+}

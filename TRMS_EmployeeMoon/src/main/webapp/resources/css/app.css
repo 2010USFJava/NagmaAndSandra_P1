@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+
+
+/* IDs */
+
+
+#i_employee-table-one-info, #i_employee-table-two-info{
+	margin: 0px 40px 0px 40px;
+
+}
+ #i_employee-table-three-info{
+	margin: 0px 40px 0px 40px;	
+}
+
+.c_border{
+	 background: #ececec;
+}
+
+.c_border:hover{
+	opacity: 90%;
+}
+
+.c_margin{
+
+}
+
+.c_emp-style{
+    color:darkslateblue;
+    text-decoration: underline;
+}
+
+p.c_formNotes{
+	color: darkslategray;
+	font-size: smaller;
+	margin: 0;
+}
+
+hr{
+	margin: 0px;
+}
+
+.c_spacing{
+	margin: 0px 40px 0px 40px;
+	font-size: large;
+	color: darkslateblue;
+	
+}
+.c_headers{
+	margin: 0px 40px 0px 40px;
+}
+
+.c_blue-link{ color:#0645AD;
+}
+.c_green-link{ 
+	color: #68a047; 
+}
+.c_blue-link:hover{
+	color: black;
+	text-decoration: none;
+}
+.c_trigger-msg{
+	color: gray;
+	font-size: medium;
+}
+.c_red-trigger{
+	color:brown;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Moon - Approval Portal</title>
+
+<link rel="stylesheet" type="text/css" href="resources/css/emp_form.css">
+<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/approval.js" ></script>
+<script type="text/javascript" src="resources/js/app_comm_table_form.js" ></script>
+<script type="text/javascript" src="resources/js/emp_tables.js" ></script>
+
+</head>
+<body>
+
+
+<!-- Management
+[1] Watches employee presentations
+-->
+
+<!-- BOOTSTRAP-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" class="active" href="/TRMS_EmployeeMoon/home">Employee Moon</a>
+        </div>
+        <ul class="nav navbar-nav">
+                <li><a href="#">View Employees Tution Applications and Update Status</a></li>
+                <li><a href="/TRMS_EmployeeMoon/home">Log Out</a></li>
+            </ul>
+    </div>
+    </nav>
+
+  <!-- ROLE-->
+<h3 class="c_headers" id="i_mgmt" name="n_mgmt"></h3>
+
+<div> 
+<h3 class="c_headers"> Employee Info</h3>
+</div>
+<hr>
+
+
+    <!-- EMPLOYEE TABLES 1-4 -->
+	<!--  <h4>Table 1</h4>
+	<div id="i_employee-table-one-info" class="c_border c_margin" name="n_employee-table-one-info">   
+	</div>-->
+
+	<span class="c_spacing"> Form Information - Table 2</span>
+	<div id="i_employee-table-two-info" class=" " name="n_employee-table-two-info"> </div>
+
+	<hr>
+	
+	<span class="c_spacing"> Status Information - Table  3</span>
+    <div id="i_employee-table-three-info" class="" name="n_employee-table-three-info"></div>
+    
+    <hr>
+    
+    <span class="c_spacing"> Balance Information - Table  4</span>
+	<div id="i_employee-table-four-info" class="" name="n_employee-table-four-info">
+
+            <!-- employeeId - initial balance - remaining balance--> 
+
+    </div>
+<!-- END OF EMPLOYEE TABLES 1-4 -->
+
+<hr>
+<!-- EMPLOYEE FORM -->
+
+	<div id="form">
+		<form id="form" action="/TRMS_EmployeeMoon/approvalmgmt" method="POST">
+            <div>    
+                <h1>Employee Application Approval</h1>
+                    <!-- READ ONLY -->
+                    <div class="form-group">  <!-- 1 -->
+                        <label for="i_formId">Form Id:</label> 
+                        <input type="text" class="form-control" id="i_formId"
+                         name="n_formId" readonly placeholder="Form Id">
+                    </div>
+
+                    <div class="form-group"> <!-- 2 -->
+                        <label for="i_employeeId">Empoyee Id:</label> 
+                        <input type="text" class="form-control" id="i_employeeId"
+                         name="n_employeeId" readonly placeholder="Empoyee Id">
+					</div>
+                    
+
+                   <div class="form-group"> <!--14  Event Presentation-->
+                        <label for="i_eventPresentation">Event Presenation Attachment</label> 
+                        <input type="url" class="form-control" id="i__eventPresentation" value=""
+                         name="i_eventPresentation" readonly placeholder="https://www.youtube.com/watch?v=8JMcYwcZS3Q">
+                    </div>
+
+                    <div class="form-group"> <!--15 Mgmt Viewed It--> 
+                        <label for="i_mgmtViewPresent">Managment Viewed Presentation</label> 
+                        <select name="n_mgmtViewPresent" class="form-control" id="i_mgmtViewPresent">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        </select>
+                    </div>
+                    
+        
+            <input type="submit" value="submit" >
+                       
+        </div>                
+        </form>
+
+		</div>
+
+<hr>
+
+
+
+</body>
+</html>

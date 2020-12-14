@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>TRMS_EmployeeMoon</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+    
+   <servlet>
+    <description></description>
+    <display-name>MasterServlet</display-name>
+    <servlet-name>MasterServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MasterServlet</servlet-class>
+  </servlet>
+  
+	 <servlet-mapping>
+	    <servlet-name>MasterServlet</servlet-name>
+		<url-pattern>/home</url-pattern>
+		<url-pattern>/employeelogin</url-pattern>
+		<url-pattern>/employeehome</url-pattern>
+		<url-pattern>/employeeinfo</url-pattern>
+		<url-pattern>/employeestatus</url-pattern>
+		<url-pattern>/employeehistory</url-pattern>
+		<url-pattern>/employeeform</url-pattern>
+		<url-pattern>/employeeformdata</url-pattern>
+		<url-pattern>/employeelogout</url-pattern>
+		<url-pattern>/statusresponse</url-pattern>
+		<url-pattern>/approvallogin</url-pattern>
+		<url-pattern>/approvalhome</url-pattern>
+		<url-pattern>/approvalmgmt</url-pattern>
+		<url-pattern>/approvaldirsup</url-pattern>
+		<url-pattern>/approvaldirmgmt</url-pattern>
+		<url-pattern>/approvaldepthead</url-pattern>
+		<url-pattern>/approvalbenco</url-pattern>
+		<url-pattern>/failure</url-pattern>
+		<url-pattern>/logout</url-pattern>
+		
+		<url-pattern>/api/*</url-pattern>
+	  </servlet-mapping>
+  
+	<servlet>
+		<servlet-name>JSONMasterServlet</servlet-name>
+		<servlet-class>com.revature.servlet.JSONMasterServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>JSONMasterServlet</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
+</web-app>
