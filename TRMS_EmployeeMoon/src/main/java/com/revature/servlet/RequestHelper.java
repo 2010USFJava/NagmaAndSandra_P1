@@ -50,11 +50,11 @@ public static String process(HttpServletRequest req) {
 			return ApprovalController.dirSup(req);	
 		
 		case "/TRMS_EmployeeMoon/approvaldepthead": /* depthead handles form */
-			System.out.println("RequestHelp.java : in /approvaldirhead dirsup");
+			System.out.println("RequestHelp.java : in /approvaldirhead ");
 			return ApprovalController.deptHead(req);
 			
 		case "/TRMS_EmployeeMoon/approvalbenco": /* benco handle form */
-			System.out.println("RequestHelp.java : in /approvalbenco dirsup");
+			System.out.println("RequestHelp.java : in /approvalbenco ");
 			return ApprovalController.benco(req);	
 			
 		case "/TRMS_EmployeeMoon/employeehome": /* */
