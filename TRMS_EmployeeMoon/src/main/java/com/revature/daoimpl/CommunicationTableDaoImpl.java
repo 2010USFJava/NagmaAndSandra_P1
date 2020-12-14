@@ -36,7 +36,7 @@ public class CommunicationTableDaoImpl implements CommunicationTableDao{
 				
 				rs.getString(17), rs.getString(18), rs.getString(19), rs.getString(20), rs.getDouble(21),
 				rs.getString(22), rs.getString(23), rs.getString(24), rs.getString(25)));
-	
+				
 			}
 			
 			

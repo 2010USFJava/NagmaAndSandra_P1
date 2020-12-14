@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import com.revature.dao.EmployeeDao;
 import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.model.Employee;
+import com.revature.util.LogThis;
 
 public class EmployeeService {
 	
@@ -32,6 +33,7 @@ public class EmployeeService {
 			//System.out.println("EmployeeService.java: sql name: " + ePerson.getUsername() + " " + ePerson.getPassword()); //<-- debug notes  sql names
 			if(ePerson.getUsername().equals(username)&& ePerson.getPassword().equals(password)) {
 				verify = true;
+				LogThis.LogIt("info", "Employee '" + username + "' logged in.");
 			}
 		}
 		return verify;

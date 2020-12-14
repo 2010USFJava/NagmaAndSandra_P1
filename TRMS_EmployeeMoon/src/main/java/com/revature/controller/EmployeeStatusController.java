@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.CommunicationTableDao;
 import com.revature.daoimpl.CommunicationTableDaoImpl;
 import com.revature.model.CommunicationTable;
+import com.revature.util.LogThis;
 
 public class EmployeeStatusController {
 	
@@ -68,6 +69,8 @@ public class EmployeeStatusController {
 		String eventPresentation = req.getParameter("n_file"); // [14]
 
 		CommunicationTable commTable = new CommunicationTable(addInfo, appOrCancel, eventGrade, eventPresentation, formId);
+		
+		LogThis.LogIt("info", "Form '" + commTable.getFormId() + "' updated with response.");
 		
 		commtableimpl.updateCommTable(commTable);
 		

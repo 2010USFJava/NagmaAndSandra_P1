@@ -83,10 +83,12 @@ function loadForms(eForms) {
             let th12 = $("<td>").text("Work Time Missed: " + eForms[i].workTimeMissed);
 			let tr13 = $("<tr>").attr("id", "i_est_reimburse");
             let th13 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
-			let tr14 = $("<tr>").attr("id", "i_est_reimburse");
-            let th14 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
-			let tr15 = $("<tr>").attr("id", "i_est_reimburse");
-            let th15 = $("<td>").text("Projected Reimbursement: $" + eForms[i].estimatedReimbursement);
+			let tr14 = $("<tr>")
+            let th14 = $("<td>").attr("id", "i_approval_status");
+			let tr15 = $("<tr>")
+            let th15 = $("<td>").attr("id", "i_approved_reimbursement");
+			let tr16 = $("<tr>")
+            let th16 = $("<td>").attr("id", "i_pending");
 			let br = $("<br>");
 			let hr = $("<hr>")
 			let div3 = $("<div>").addClass("column").attr("id", "formStatus").text("");
@@ -127,6 +129,8 @@ function loadForms(eForms) {
             table.append(th14);
 			table.append(tr15);
             table.append(th15);
+			table.append(tr16);
+            table.append(th16);
 			div2.append(div3);
 
 
@@ -187,10 +191,10 @@ function loadForms(eForms) {
 					switch(form[0].approvalStatus) {
 					case "Awaiting Response":
 						console.log("Awaiting Response");
-						p.text("Reimbursement Status: " + form[0].approvalStatus);
-						var p2 = $("<p>").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
-						$("#formStatus").append(p);
-						$("#formStatus").append(p2);
+						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						//$("#formStatus").append(p);
+						//$("#formStatus").append(p2);
 						$("#main").show();
 						console.log(form[0].formId);
 						console.log("Awaiting Response");
@@ -198,20 +202,22 @@ function loadForms(eForms) {
 					
 					case "Approved":
 						$("#main").hide();
-						p.text("Reimbursement Status: " + form[0].approvalStatus);
-						$("#formStatus").append(p);
-						
+						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						//$("#formStatus").append(p);
 						console.log("Reimbursement Approved");
 					break;
 					
 					case "pending":
 						$("#main").hide();
-						p.text("Reimbursement Status: " + form[0].approvalStatus);
-						var p2 = $("<p>").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
-						var p3 = $("<p>").text("Tuition Reimbursement is awaiting final approval. Please check back later for an update.");
-						$("#formStatus").append(p);
-						$("#formStatus").append(p2);
-						$("#formStatus").append(p3);
+						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						//p.text("Reimbursement Status: " + form[0].approvalStatus);
+						//var p2 = $("<p>").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						$("#i_pending").text("Tuition Reimbursement is awaiting final approval. Please check back later for an update.");
+						//$("#formStatus").append(p);
+						//$("#formStatus").append(p2);
+						//$("#formStatus").append(p3);
 						
 						console.log(form[0].formId);
 						console.log("Pending");
@@ -219,15 +225,18 @@ function loadForms(eForms) {
 					
 					case "Denied":
 						$("#main").hide();
-						p.text("Reimbursement Status: " + form[0].approvalStatus);
-						var p2 = $("<p>").text("Tuition Reimbursement denied.");
-						$("#formStatus").append(p);
-						$("#formStatus").append(p2);
+						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
+						//p.text("Reimbursement Status: " + form[0].approvalStatus);
+						//var p2 = $("<p>").text("Tuition Reimbursement denied.");
+						//$("#formStatus").append(p);
+						//$("#formStatus").append(p2);
 						
 						console.log("Reimbursement Denied");
 					break;
 					
 					default:
+						$("#main").hide();
 						console.log("Default");
 				
 				}

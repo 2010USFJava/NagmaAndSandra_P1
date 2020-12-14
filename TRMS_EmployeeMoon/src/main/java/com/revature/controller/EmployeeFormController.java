@@ -17,6 +17,7 @@ import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.daoimpl.EmployeeFormDaoImpl;
 import com.revature.model.Employee;
 import com.revature.model.EmployeeForm;
+import com.revature.util.LogThis;
 
 public class EmployeeFormController {
 	
@@ -90,6 +91,7 @@ public class EmployeeFormController {
 				Double.parseDouble(req.getParameter("n_estimatedReimbursement")));
 		
 		empformdao.saveEmployeeForm(ef);
+		LogThis.LogIt("info", "New Form '" + ef.getId() + "' submmited by employee, " + ef.getFirstName() + ", employee id = " + ef.getEmployeeId());
 		
 		return EmployeeController.employee(req, res);	
 	}
