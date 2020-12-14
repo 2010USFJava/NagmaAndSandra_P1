@@ -34,6 +34,15 @@ static EmployeeService eServ = new EmployeeService();
 		if(ePerson==null) {
 			return "failure";
 		}else {
+			Cookie logoutCookie = null;
+			logoutCookie = new Cookie("user", "");
+			logoutCookie.setMaxAge(0);
+			res.addCookie(logoutCookie);
+			Cookie logoutSession = null;
+			logoutSession = new Cookie("JSESSIONID", "");
+			logoutSession.setMaxAge(0);
+			res.addCookie(logoutSession);
+			
 			HttpSession session = req.getSession();
 			session.setAttribute("currentuser", ePerson.getUsername());
 			Cookie loginCookie = null;

@@ -179,12 +179,12 @@ function loadForms(eForms) {
 					console.log("No");
 				}
 			}
-			
-			//console.log(eStatus[i].formId);
-			//console.log(id);
 			var fid = form[0].formId;
 			document.getElementById("formid").value = fid;
-
+			//console.log(eStatus[i].formId);
+			//console.log(id);
+			if(fid != null) {
+			
 			var p = $("<p>").attr("id", "i_reimburse_status");
 			console.log(form[0].approvalStatus);
 			
@@ -208,7 +208,7 @@ function loadForms(eForms) {
 						console.log("Reimbursement Approved");
 					break;
 					
-					case "pending":
+					case "Pending":
 						$("#main").hide();
 						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
 						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
@@ -236,9 +236,14 @@ function loadForms(eForms) {
 					break;
 					
 					default:
+						$("#i_pending").text("Tuition Reimbursement is awaiting approval. Please check back later for an update.");
 						$("#main").hide();
 						console.log("Default");
-				
+				}
+				} else {
+						$("#main").hide();
+						$("#i_approval_status").text("Reimbursement Status: " + form[0].approvalStatus);
+						$("#i_approved_reimbursement").text("Approved Reimbursement Amount: $" + form[0].alterReimbursmentAmount);
 				}
 		}
 	}
