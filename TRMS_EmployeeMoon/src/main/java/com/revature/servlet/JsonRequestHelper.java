@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controller.ApprovalController;
-import com.revature.model.Approval;
 
 /*
  * Parse Employee data from database and send to getsession.json link
@@ -40,7 +38,6 @@ public class JsonRequestHelper {
 				System.out.println("\nConvert to json data...\n");
 				ApprovalController.getCommuncationTableSession(req, res);
 				break; 
-				
 			default:
 				//Approval aPerson = new Approval(0,"default","default");
 				//res.getWriter().write(new ObjectMapper().writeValueAsString('default json'));

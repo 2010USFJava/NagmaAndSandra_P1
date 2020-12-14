@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Approval Porter</title>
-<script type="text/javascript" src="resources/js/approval.js" ></script>
-<script type="text/javascript" src="resources/js/emp_tables.js" ></script>
-<script type="text/javascript" src="resources/js/app_comm_table_form.js" ></script>
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Employee Moon - Approval Portal</title>
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/emp_form.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="resources/js/approval.js" ></script>
+		<script type="text/javascript" src="resources/js/app_comm_table_form.js" ></script>
+		<script type="text/javascript" src="resources/js/emp_tables.js" ></script>
+		
+		</head>
 <body>
 
 
@@ -15,64 +23,90 @@
 the appropriate(approver) parties.
 -->
 
-<h3 id="i_dirmgmt" name="n_dirmgmt"></h3>
+
+<!-- BOOTSTRAP-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" class="active" href="/TRMS_EmployeeMoon/home">Employee Moon</a>
+        </div>
+        <ul class="nav navbar-nav">
+                <li><a href="#">View Employees Tution Applications and Update Status</a></li>
+                <li><a href="/TRMS_EmployeeMoon/home">Log Out</a></li>
+            </ul>
+    </div>
+	</nav>
+	
+
+
+<h3 class="c_headers" id="i_dirmgmt" name="n_dirmgmt"></h3>
 
 <div> 
-<h3>Employee Info</h3>
-</div>
-<hr>
+	<h3 class="c_headers"> Employee Info</h3>
+	</div>
+	<hr>
+	
+	
+		<!-- EMPLOYEE TABLES 1-4 -->
+		<!--  <h4>Table 1</h4>
+		<div id="i_employee-table-one-info" class="c_border c_margin" name="n_employee-table-one-info">   
+		</div>-->
+	
+		<span class="c_spacing"> Form Information - Table 2</span>
+		<div id="i_employee-table-two-info" class=" " name="n_employee-table-two-info"> </div>
+	
+		<hr>
+		
+		<span class="c_spacing"> Status Information - Table  3</span>
+		<div id="i_employee-table-three-info" class="" name="n_employee-table-three-info"></div>
+		
+		<hr>
+		
+		<span class="c_spacing"> Balance Information - Table  4</span>
+		<div id="i_employee-table-four-info" class="" name="n_employee-table-four-info">
+	
+				<!-- employeeId - initial balance - remaining balance--> 
+	
+		</div>
+	<!-- END OF EMPLOYEE TABLES 1-4 -->
+	
+	<hr>
+	<!-- EMPLOYEE FORM -->
+	
+		<div id="form">
+			<form id="form" action="/TRMS_EmployeeMoon/approvaldirmgmt" method="POST">
+				<div>    
+					<h1>Employee Application Approval</h1>
+						<!-- READ ONLY -->
+						<div class="form-group">  <!-- 1 -->
+							<label for="i_formId">Form Id:</label> 
+							<input type="text" class="form-control" id="i_formId"
+							 name="n_formId" readonly placeholder="Form Id">
+						</div>
+	
+						<div class="form-group"> <!-- 2 -->
+							<label for="i_employeeId">Empoyee Id:</label> 
+							<input type="text" class="form-control" id="i_employeeId"
+							 name="n_employeeId" readonly placeholder="Empoyee Id">
+						</div>
 
-<div>
-<table>
-<tr>
-<td>1</td>
-<th>Tuition Reimbursement</th>
-<td> <input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1">Approved</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value="">  <label for="vehicle1">Denied</label><br> </td>
-</tr>
+						<div class="form-group"> <!-- 16 (hidden) -->
+							<label for="i_dirMgrApprPresent">Presentation Satisfactory</label> 
+							<select name="n_dirMgrApprPresent" class="form-control" id="i_dirMgrApprPresent"
+							required="required">
+							<option value="Satisfied">Satisfied</option>
+							<option value="Denied">Denied</option>
+							</select>
+						</div>
 
-<tr>
-<td>2</td>
-<th>Requesting Additional Information</th>
-<td> <textarea name="comment" form="usrform">Enter text here...</textarea></td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1"> Employee</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1">  Direct Supervisor</label><br> </td>
-<td><input type="radio" id="" name="vehicle1" value=""> <label for="vehicle1"> Department Head</label><br> </td>
-</tr>
-
-<tr>
-<td>3</td>
-<th>Alter the Reimbursement Amount</th>
-<!-- and give them the option to cancel their reimbursement request. -->
-<td><input type="checkbox" id="" name="vehicle1" value=""> <label for="vehicle1">Notify the employee of the change</label><br> </td> 
-</tr>
-
-<tr>
-<td>4</td>
-<th>Alter the Reimbursement Amount</th>
-<!-- [1] and give them the option to cancel their reimbursement request. -->
-<!-- [2] Allowed to award an amount larger than the amount 
-	     available for the employee, but must provide a reason 
-	     for this, and the increase must be marked as exceeding 
-	     available funds. -->
-<td><input type="text" id="" name="vehicle1" value="$1000"> <label for="vehicle1"></label><br> </td> 
-<td><input type="checkbox" id="" name="vehicle1" value=""> <label for="vehicle1">Notified the employee of the change</label><br> </td> 
-</tr>
-
-
-<!-- If not approved in timely matter, an escalation email 
-    should be sent to the BenCo’s Direct Supervisor -->
-
-
-</table>
-</div>
-
-<hr>
-
-
-<form method="post" action="home.change">
-	<input type="submit" value="logout"/>
-	</form>
+				<input type="submit" value="submit" >
+						   
+			</div>                
+			</form>
+			</div>
+	
+	<hr>
+	
 
 </body>
 </html>

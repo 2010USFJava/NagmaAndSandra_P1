@@ -28,7 +28,11 @@
 		<url-pattern>/employeeform</url-pattern>
 		<url-pattern>/approvallogin</url-pattern>
 		<url-pattern>/approvalhome</url-pattern>
-		
+		<url-pattern>/approvalmgmt</url-pattern>
+		<url-pattern>/approvaldirsup</url-pattern>
+		<url-pattern>/approvaldirmgmt</url-pattern>
+		<url-pattern>/approvaldepthead</url-pattern>
+		<url-pattern>/approvalbenco</url-pattern>
 		<url-pattern>/api/*</url-pattern>
 	  </servlet-mapping>
   

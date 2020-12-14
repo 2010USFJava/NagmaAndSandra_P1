@@ -49,8 +49,10 @@ hr{
 	margin: 0px 40px 0px 40px;
 }
 
-.c_blue-link
-{ color:#0645AD;
+.c_blue-link{ color:#0645AD;
+}
+.c_green-link{ 
+	color: #68a047; 
 }
 .c_blue-link:hover{
 	color: black;

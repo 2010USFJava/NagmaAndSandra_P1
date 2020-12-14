@@ -79,6 +79,12 @@ public class CommunicationTable {
 		this.markedUrgent = markedUrgent;
 	}
 
+	public CommunicationTable(int formId, String mgmtViewPresent) {
+		super();
+		this.formId = formId;
+		this.mgmtViewPresent = mgmtViewPresent;
+	}
+	
 	public int getFormId() {
 		return formId;
 	}

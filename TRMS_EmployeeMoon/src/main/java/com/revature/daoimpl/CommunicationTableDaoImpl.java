@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.dao.CommunicationTableDao;
+import com.revature.model.BalanceInfo;
 import com.revature.model.CommunicationTable;
 import com.revature.util.ConnFactory;
 
@@ -75,6 +76,74 @@ public class CommunicationTableDaoImpl implements CommunicationTableDao{
 				ps.executeUpdate();
 			
 	}
+	
+	
+	public void updateMgmtInfo(CommunicationTable ePerson) throws SQLException{
+		Connection conn = cf.getConnection();
+		
+		String sql = "update communication_table set mgmt_view_present=? where form_id=?;";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, ePerson.getMgmtViewPresent());
+		ps.setInt(2, ePerson.getFormId()); 
+		
+		ps.executeUpdate();
+	}
+	
+	
+	public void updateDirMgrInfo(CommunicationTable ePerson) throws SQLException{
+		Connection conn = cf.getConnection();
+		
+		String sql = "update communication_table set dir_mgr_appr_present=? where form_id=?;";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, ePerson.getDirMgrApprPresent());
+		ps.setInt(2, ePerson.getFormId()); 
+		
+		ps.executeUpdate();
+	}
+	
+	public void updateDirSupInfo(CommunicationTable ePerson) throws SQLException{
+			Connection conn = cf.getConnection();
+			
+			String sql = "update communication_table set requestor_need_additional_info_from=?, notify_employee=?, grade_status_direct_sup=?, direct_sup_appr=?, escalation_email_direct_sup=?, automatic_approv_direct_sup=?, marked_urgent=?  where form_id=?;";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, ePerson.getRequestorNeedAdditionalInfoFrom());
+			ps.setString(2, ePerson.getNotifyEmployee());
+			ps.setString(3, ePerson.getGradeStatusDirectSup());
+			ps.setString(4, ePerson.getDirectSupAppr());
+			ps.setString(5, ePerson.getEscalationEmailDirectSup());
+			ps.setString(6, ePerson.getAutomaticApprovDirectSup());
+			ps.setString(7, ePerson.getMarkedUrgent());
+			ps.setInt(8, ePerson.getFormId()); 
+			
+			ps.executeUpdate();
+		}
+		
+		public void updateDeptHeadInfo(CommunicationTable ePerson) throws SQLException{}
+		
+		public void updateBencoInfo(CommunicationTable ePerson) throws SQLException{
+			
+				Connection conn = cf.getConnection();
+			
+			String sql = "update communication_table set alter_reimbursment_amount=?, approval_status=?, benco_final_appr=?, final_reimburse_val_benco =? where form_id=?;";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setDouble(1, ePerson.getAlterReimbursmentAmount());
+			ps.setString(2, ePerson.getApprovalStatus()); //12
+			ps.setString(3, ePerson.getBencoFinalAppr());
+			ps.setDouble(4, ePerson.getFinalReimburseValBenco());
+			ps.setInt(5, ePerson.getFormId()); 
+			
+			ps.executeUpdate();
+			
+		}
+		
+		
+
+
 	
 	
 	

@@ -9,7 +9,17 @@ public interface CommunicationTableDao {
 
 	
 	List<CommunicationTable> getAllCommunicationTable() throws SQLException;
+	
 	public void insertIntoCommunicationForm(CommunicationTable ePerson) throws SQLException;
 	
-			
+	public void updateMgmtInfo(CommunicationTable ePerson) throws SQLException;	
+	
+	public void updateDirMgrInfo(CommunicationTable ePerson) throws SQLException;
+	
+	public void updateDirSupInfo(CommunicationTable ePerson) throws SQLException;
+	
+	public void updateDeptHeadInfo(CommunicationTable ePerson) throws SQLException;
+		
+	public void updateBencoInfo(CommunicationTable ePerson) throws SQLException;
+
 }

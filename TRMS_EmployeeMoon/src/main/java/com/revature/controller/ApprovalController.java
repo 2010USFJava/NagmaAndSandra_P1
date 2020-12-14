@@ -11,14 +11,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.ApprovalDao;
+import com.revature.dao.BalanceInfoDao;
 import com.revature.dao.CommunicationTableDao;
 import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeFormDao;
 import com.revature.daoimpl.ApprovalDaoImpl;
+import com.revature.daoimpl.BalanceInfoDaoImpl;
 import com.revature.daoimpl.CommunicationTableDaoImpl;
 import com.revature.daoimpl.EmployeeDaoImpl;
 import com.revature.daoimpl.EmployeeFormDaoImpl;
 import com.revature.model.Approval;
+import com.revature.model.BalanceInfo;
 import com.revature.model.CommunicationTable;
 import com.revature.model.Employee;
 import com.revature.model.EmployeeForm;
@@ -28,11 +31,12 @@ public class ApprovalController {
 	public static EmployeeDao empdao = new EmployeeDaoImpl(); //Database Code
 	public static EmployeeFormDao empformdao = new EmployeeFormDaoImpl(); //Database Code
 	public static CommunicationTableDao commtabledao= new CommunicationTableDaoImpl(); //Database Code
+	public static BalanceInfoDao baldao =  new BalanceInfoDaoImpl();
 	public static List<Approval> appList;
 	public static List<Employee> empList;	
 	public static List<EmployeeForm> empFormList;
 	public static List<CommunicationTable> commTableList;
-	
+	public static List<BalanceInfo> balanceInfoList;
 	
 	public static String approval(HttpServletRequest req) {
 		//System.out.println("ApprovalController: role: " + req.getSession().getAttribute("currentrole"));
@@ -177,7 +181,10 @@ public class ApprovalController {
 		String automaticApprovDirectSup = req.getParameter("n_automaticApprovDirectSup"); //[23]
 		String automaticApprovDeptHead = req.getParameter("n_automaticApprovDeptHead"); //[24]
 		String markedUrgent = req.getParameter("n_markedUrgent"); //[25]
+
+		// add benco info 
 		
+	
 		CommunicationTable ePerson = new CommunicationTable(
 				Integer.parseInt(req.getParameter("n_formId")), 
 				Integer.parseInt(req.getParameter("n_employeeId")) , 
@@ -212,10 +219,7 @@ public class ApprovalController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		
 
-		
 
 		
 		System.out.println("[1] ApprovalController: formId : " + formId); //[1]
@@ -247,6 +251,183 @@ public class ApprovalController {
 		return ApprovalController.approval(req);
 		
 	}
+	
+public static String formMgmt(HttpServletRequest req) {
+		
+		if(!req.getMethod().equals("POST")) {
+		return "resources/html/app_response_form.html";
+		}
+		String formId = req.getParameter("n_formId"); // [1]
+		String mgmtViewPresent = req.getParameter("n_mgmtViewPresent"); // [15]
+		
+		CommunicationTable ePerson = new CommunicationTable(
+				Integer.parseInt(req.getParameter("n_formId")), 
+				req.getParameter("n_mgmtViewPresent"));
+	
+			try {
+				commtabledao.updateMgmtInfo(ePerson);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+		System.out.println("[15] ApprovalController: mgmtViewPresent : " + mgmtViewPresent); // [15]
+
+		return ApprovalController.approval(req);	
+	}
+
+
+		public static String dirMgmt(HttpServletRequest req) {
+			
+			if(!req.getMethod().equals("POST")) {
+				return "resources/html/app_response_form.html";
+				}
+				String formId = req.getParameter("n_formId"); // [1]
+				String dirMgrApprPresent = req.getParameter("n_dirMgrApprPresent"); // [15]
+				
+				CommunicationTable ePerson = new CommunicationTable();
+				
+				ePerson.setFormId(Integer.parseInt(req.getParameter("n_formId")));
+				ePerson.setDirMgrApprPresent(dirMgrApprPresent);
+						
+			
+					try {
+						commtabledao.updateDirMgrInfo(ePerson);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+				System.out.println("[15] ApprovalController: dirMgrApprPresent : " + dirMgrApprPresent); // [15]
+
+				return ApprovalController.approval(req);
+
+		
+		}
+		public static String dirSup(HttpServletRequest req) {
+			
+			if(!req.getMethod().equals("POST")) {
+				return "resources/html/app_response_form.html";
+				}
+				String formId = req.getParameter("n_formId"); // [1]
+				String requestorNeedAdditionalInfoFrom = req.getParameter("n_requestorNeedAdditionalInfoFrom"); //[4]
+				String notifyEmployee = req.getParameter("n_notifyEmployee"); // [10]
+				String gradeStatusDirectSup = req.getParameter("n_gradeStatusDirectSup"); // [17]
+				String markedUrgent = req.getParameter("n_markedUrgent"); //[25]
+				String escalationEmailDirectSup = req.getParameter("n_escalationEmailDirectSup"); //[22]
+				String automaticApprovDirectSup = req.getParameter("n_automaticApprovDirectSup"); //[23]
+				String directSupAppr = req.getParameter("n_directSupAppr"); // [18]
+				
+				
+				CommunicationTable ePerson = new CommunicationTable();
+				
+				ePerson.setFormId(Integer.parseInt(req.getParameter("n_formId")));
+				ePerson.setRequestorNeedAdditionalInfoFrom(requestorNeedAdditionalInfoFrom);
+				ePerson.setNotifyEmployee(notifyEmployee);
+				ePerson.setGradeStatusDirectSup(gradeStatusDirectSup);
+				ePerson.setMarkedUrgent(markedUrgent);
+				ePerson.setEscalationEmailDirectSup(escalationEmailDirectSup);
+				ePerson.setAutomaticApprovDirectSup(automaticApprovDirectSup);
+				ePerson.setDirectSupAppr(directSupAppr);
+			
+					try {
+						commtabledao.updateDirSupInfo(ePerson);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+					System.out.println("[4] ApprovalController: requestorNeedAdditionalInfoFrom : " + requestorNeedAdditionalInfoFrom); //[4]
+					System.out.println("[10] ApprovalController: notifyEmployee  :" + notifyEmployee); // [10]
+					System.out.println("[17] ApprovalController: gradeStatusDirectSup : " + gradeStatusDirectSup); // [17]
+					System.out.println("[18] ApprovalController: directSupAppr : " + directSupAppr); // [18]
+					System.out.println("[22] ApprovalController: escalationEmailDirectSup : " + escalationEmailDirectSup); // [22] 
+					System.out.println("[23] ApprovalController: automaticApprovDirectSup : " + automaticApprovDirectSup); // [23]
+					System.out.println("[25] ApprovalController: markedUrgent  : " + markedUrgent); // [25]
+					
+				return ApprovalController.approval(req);
+				
+		}
+
+		
+		public static String deptHead(HttpServletRequest req) {
+			
+			if(!req.getMethod().equals("POST")) {
+				return "resources/html/app_response_form.html";
+				}
+				String formId = req.getParameter("n_formId"); // [1]
+
+				CommunicationTable ePerson = new CommunicationTable();
+				
+				ePerson.setFormId(Integer.parseInt(req.getParameter("n_formId")));
+
+					try {
+						commtabledao.updateDirSupInfo(ePerson);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+	
+				return ApprovalController.approval(req);
+			
+			
+		}
+		public static String benco(HttpServletRequest req) {
+			
+			if(!req.getMethod().equals("POST")) {
+				return "resources/html/app_response_form.html";
+				}
+				String formId = req.getParameter("n_formId"); // [1]
+				String employeeId = req.getParameter("n_employeeId"); // [2]
+				String alteReimbursmentAmount = req.getParameter("n_alteReimbursmentAmount"); // [6]
+				String approvalStatus = req.getParameter("n_approvalStatus"); // [12]
+				String bencoFinalAppr = req.getParameter("n_bencoFinalAppr"); // [20]
+				String finalReimburseValBenco = req.getParameter("n_finalReimburseValBenco"); //[21]
+				
+				CommunicationTable ePerson = new CommunicationTable();
+				
+				ePerson.setFormId(Integer.parseInt(req.getParameter("n_formId")));
+				ePerson.setEmployeeId(Integer.parseInt(req.getParameter("n_employeeId"))); // [2]
+				ePerson.setAlterReimbursmentAmount(Double.parseDouble(req.getParameter("n_alteReimbursmentAmount")));
+				ePerson.setApprovalStatus(req.getParameter("n_approvalStatus"));
+				ePerson.setBencoFinalAppr(req.getParameter("n_bencoFinalAppr"));
+				ePerson.setFinalReimburseValBenco(Double.parseDouble(req.getParameter("n_finalReimburseValBenco")));
+				
+				
+				// Calculate final balance
+				
+				//double cost = Double.parseDouble(req.getParameter("n_finalReimburseValBenco"));
+				//System.out.println("[21] ApprovalController: cost : " + cost); // [21]
+				
+			
+					try {
+						commtabledao.updateBencoInfo(ePerson); //works
+						//baldao.updateAvailableBalance(aPerson); // work
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					System.out.println("[1] ApprovalController: formId : " + formId); //[1]
+					System.out.println("[2] ApprovalController: employeeId : " + employeeId); //[2]
+					System.out.println("[6] ApprovalController: alterReimbursmentAmount  :" + alteReimbursmentAmount); //  [6]
+					System.out.println("[12] ApprovalController: approvalStatus : " + approvalStatus); // [12]
+					System.out.println("[20] ApprovalController: bencoFinalAppr : " + bencoFinalAppr); // [20]
+					System.out.println("[21] ApprovalController: finalReimburseValBenco : " + finalReimburseValBenco); // [21]
+	
+				return ApprovalController.approval(req);
+			
+		}
+		
+		
+
+
+	
 	
 	
 }

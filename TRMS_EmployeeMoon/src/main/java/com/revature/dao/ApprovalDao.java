@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.model.Approval;
+import com.revature.model.BalanceInfo;
 
 public interface ApprovalDao {
 	

@@ -156,7 +156,8 @@ function loadCommunicationTableForm(ePerson){
 								<a href="#" class="c_blue-link">Grade Status(Direct Supervisor): ${ePerson[i].gradeStatusDirectSup}</a>  &nbsp  |  &nbsp 
 								<a href="#" class="c_blue-link">Approval (Direct Supervisor): ${ePerson[i].directSupAppr}</a>  &nbsp  |  &nbsp
 								<a href="#" class="c_blue-link">Approval (Department Head): ${ePerson[i].deptHeadAppr}</a>  &nbsp  |  &nbsp
-								<a href="#" class="c_blue-link">Final Approval (BenCo): ${ePerson[i].bencoFinalAppr} </a> 
+								<a href="#" class="c_blue-link">Final Approval (BenCo): ${ePerson[i].bencoFinalAppr} </a> &nbsp  |  &nbsp 
+								<a href="#" class="c_blue-link"><b>Marked Urgent:</b> ${ePerson[i].markedUrgent}</a>  
 								
 								<br><span class="c_trigger-msg"> Automatic Triggers if Delayed: </span> <br>
 								<span class="c_red-trigger">
@@ -165,8 +166,7 @@ function loadCommunicationTableForm(ePerson){
 								<span class="c_red-trigger">Escalation Emailed to Direct Supervisor: ${ePerson[i].escalationEmailDirectSup}</span> 
 								</span><br>
 								
-								<a href="#" class="c_blue-link">Final Reimbursement Value: ${ePerson[i].finalReimburseValBenco}</a>  &nbsp  |  &nbsp 
-								<a href="#" class="c_blue-link"><b>Marked Urgent:</b> ${ePerson[i].markedUrgent}</a> `  + ' <hr>';
+								<b><a href="#" class="c_green-link">Final Reimbursement Value: $${ePerson[i].finalReimburseValBenco}</a> </b>`  + ' <hr>';
 								
 		console.log("emp_table.js : loadCommunicationTableForm() Table 3 Length: i : " + i);
 	}
@@ -211,5 +211,8 @@ function loadCommunicationTableForm(ePerson){
 // 	}
 // 	document.getElementById("i_employee-table-one-info").innerHTML = msg1;
 // }
+
+
+
 
 

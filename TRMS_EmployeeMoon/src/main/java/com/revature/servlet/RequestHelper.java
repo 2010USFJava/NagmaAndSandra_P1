@@ -37,6 +37,26 @@ public static String process(HttpServletRequest req) {
 			System.out.println("RequestHelp.java : in /approvalhome rhelper");
 			return ApprovalController.formData(req);
 			
+		case "/TRMS_EmployeeMoon/approvalmgmt": /* mgmt handles form */
+			System.out.println("RequestHelp.java : in /approvalmgmt formMgmt");
+			return ApprovalController.formMgmt(req);
+			
+		case "/TRMS_EmployeeMoon/approvaldirmgmt": /* dirmgmt handles form */
+			System.out.println("RequestHelp.java : in /approvaldirmgmt dirmgmt");
+			return ApprovalController.dirMgmt(req);	
+		
+		case "/TRMS_EmployeeMoon/approvaldirsup": /* dirsup handles form*/
+			System.out.println("RequestHelp.java : in /approvaldirsup dirsup");
+			return ApprovalController.dirSup(req);	
+		
+		case "/TRMS_EmployeeMoon/approvaldepthead": /* depthead handles form */
+			System.out.println("RequestHelp.java : in /approvaldirhead dirsup");
+			return ApprovalController.deptHead(req);
+			
+		case "/TRMS_EmployeeMoon/approvalbenco": /* benco handle form */
+			System.out.println("RequestHelp.java : in /approvalbenco dirsup");
+			return ApprovalController.benco(req);	
+			
 		case "/TRMS_EmployeeMoon/employeehome": /* */
 			System.out.println("in /employeehome rhelper");
 			return EmployeeController.employee(req);

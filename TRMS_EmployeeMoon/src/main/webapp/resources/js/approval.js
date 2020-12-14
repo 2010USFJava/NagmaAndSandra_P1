@@ -42,7 +42,7 @@ function loadApprover(aPerson){
 				document.getElementById('i_dirhead').innerHTML = 'Direct Head';
 			}
 			if(document.getElementById('i_dirmgmt')){
-				document.getElementById('i_dirmgmt').innerHTML = 'Direct Management';
+				document.getElementById('i_dirmgmt').innerHTML = 'Direct Manager';
 			}
 			if(document.getElementById('i_mgmt')){
 				document.getElementById('i_mgmt').innerHTML = 'Management';

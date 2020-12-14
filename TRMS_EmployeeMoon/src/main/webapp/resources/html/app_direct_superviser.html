@@ -80,7 +80,7 @@ approval.
 
 
 <div id="form">
-    <form id="form" action="/TRMS_EmployeeMoon/approvalhome" method="POST">
+    <form id="form" action="/TRMS_EmployeeMoon/approvaldirsup" method="POST">
    <div>    
         <h1>Employee Application Approval</h1>
         <!-- READ ONLY -->
@@ -95,14 +95,7 @@ approval.
             <input type="text" class="form-control" id="i_employeeId"
              name="n_employeeId" readonly placeholder="Empoyee Id">
         </div>
-     <!--  
-        <div class="form-group">  3 
-            <label for="i_estimReimbursement">Estimated Reimbursement:</label> 
-            <input type="text" class="form-control" id="i_estimReimbursement"
-             name="n_estimReimbursement" readonly placeholder="0.00">
-        </div>
-    --> 
-        <!-- BENCO APPROVER -->
+        
         <div class="form-group"> <!-- 4 -->
             <label for="i_requestorNeedAdditionalInfoFrom">Request Additional Info:</label> 
             <input type="text" class="form-control" id="i_requestorNeedAdditionalInfoFrom"
@@ -118,6 +111,14 @@ approval.
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
+        </div>
+
+        <div class="form-group"> <!-- 17 -->
+            <label for="i_gradeStatusDirectSup">Grade Status(Direct Supervisor)</label> 
+            <select name="n_gradeStatusDirectSup" hidden class="form-control" id="i_gradeStatusDirectSup">
+                <option value="Passed">Passed</option>
+                <option value="Failed">Failed</option>
+                </select>
         </div>
                 
         <div class="form-group"> <!-- 25 (Auto-populated) -->
@@ -137,33 +138,8 @@ approval.
             <input type="text" class="form-control" readonly  id="i_automaticApprovDirectSup"
             name="n_automaticApprovDirectSup" value="no">
         </div>  
-             
-         <div class="form-group"> <!-- 24 (Auto-populated) -->
-            <label for="i_automaticApprovDeptHead">Automatic Approval Department Head</label> 
-            <input type="text" class="form-control" readonly id="i_automaticApprovDeptHead"
-             name="n_automaticApprovDeptHead" value="no">
-        </div>
+            
 
-        <div class="form-group"> <!-- 12 -->
-            <label for="i_approvalStatus">Application Approval Status</label> 
-             <select name="n_approvalStatus" class="form-control" id="i_approvalStatus"
-                required="required">
-                <option value="Pending">Awaiting Response</option>
-                <option value="Pending">Pending</option>
-                <option value="Approved">Approved</option>
-                <option value="Denied">Denied</option>
-            </select>
-        </div>
-
-    </div>
-
-        <div class="form-group"> <!-- 17 -->
-            <label for="i_gradeStatusDirectSup"></label> 
-            <input class="form-control" id="i_gradeStatusDirectSup"
-             name="n_gradeStatusDirectSup" placeholder="Grade Status(Direct Supervisor)">
-        </div>
-
-        
         <div class="form-group">  <!-- 18 -->  
             <label for="i_directSupAppr">Direct Supervisor Aprroval</label> 
             <select name="n_directSupAppr" hidden class="form-control" id="i_directSupAppr">
@@ -171,8 +147,6 @@ approval.
             <option value="Denied">Denied</option>
             </select>
         </div>
-
-
         
          <input type="submit" value="submit" >
            
