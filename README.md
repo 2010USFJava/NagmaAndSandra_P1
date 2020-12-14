@@ -5,6 +5,8 @@ new TRMS design will incorporate:
 - Back-End: Java, PostgreSQL, and Servlet, etc
 - Front-End: HTML, CSS, JavaScript, AJAX, and etc
 
+This project also incorporates cookies, which was not one of the required technologies.
+
 ### Project Setup
 - Clone this repository to your machine.
 - Set up your database in Amazon RDS through the AWS website.
@@ -13,9 +15,10 @@ new TRMS design will incorporate:
 - Set up a connection in DBeaver using the url to establish a connection.
 - Make sure you have Apache Tomcat version 9.0 installed.
 - Run the trms.sql file to create a new schema and create new tables.
- - Run the TRMS_EmployeeMoon project in Spring Tool Suite and the console application is ready for you to use. Make sure to add the project to the server.
- - Start the server.
+- Run the TRMS_EmployeeMoon project in Spring Tool Suite and the console application is ready for you to use. Make sure to add the project to the server.
+- Start the server.
 - Go to http://localhost:8080/TRMS_EmployeeMoon/home
+- Login with the credentials below or create your own employee credentials in the database.
 
 ### Login
     
