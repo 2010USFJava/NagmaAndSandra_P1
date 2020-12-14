@@ -63,4 +63,4 @@ until a passing grade or presentation over the event is provided.
 - PostgreSQL 12
 - Eclipse/Spring Tools Suite
 - DBeaver
-- Trello
+- [Trello](https://trello.com/invite/b/o0HT6j4K/e746baecb5c84d154bf12b81bef08b1c/agile-sprint-board)
