@@ -1,1 +1,3 @@
-window.onload = function () {window.location.reload()}
+function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
