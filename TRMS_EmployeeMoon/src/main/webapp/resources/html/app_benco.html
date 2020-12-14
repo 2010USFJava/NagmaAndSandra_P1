@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Moon - Approval Portal</title>
+
+<link rel="stylesheet" type="text/css" href="resources/css/emp_form.css">
+<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/approval.js" ></script>
+<script type="text/javascript" src="resources/js/app_comm_table_form.js" ></script>
+<script type="text/javascript" src="resources/js/emp_tables.js" ></script>
+
+</head>
+<body>
+
+
+<!-- BENCO
+[1] This stage is not skip-able for any reason!!! 
+[2] Must provide approval for Tuition Reimbursement.
+[3] Can request additional information from the employee, 
+    Direct Supervisor,or Department Head before approval.
+[4] Has the ability to alter the reimbursement amount and 
+    should notified the employee of the change, and give 
+    them the option to cancel their reimbursement request.
+[5] Allowed to award an amount larger than the amount 
+    available for the employee, but must provide a reason 
+    for this, and the increase must be marked as exceeding 
+    available funds.
+[6] If not approved in timely matter, an escalation email 
+    should be sent to the BenCo’s Direct Supervisor.
+-->
+
+<!-- BOOTSTRAP-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" class="active" href="/TRMS_EmployeeMoon/home">Employee Moon</a>
+        </div>
+        <ul class="nav navbar-nav">
+                <li><a href="#">View Employees Tution Applications and Update Status</a></li>
+                <li><a href="/TRMS_EmployeeMoon/home">Log Out</a></li>
+            </ul>
+    </div>
+    </nav>
+
+  <!-- ROLE-->
+<h3 class="c_headers" id="i_benco" name="n_benco"></h3>
+
+	<div> 
+		<h2 class="c_headers" >Employee Info</h2>
+	</div>
+
+	<hr>
+
+    <!-- EMPLOYEE TABLES 1-4 -->
+	<!--  <h4>Table 1</h4>
+	<div id="i_employee-table-one-info" class="c_border c_margin" name="n_employee-table-one-info">   
+	</div>-->
+
+	<span class="c_spacing"> Form Information - Table 2</span>
+	<div id="i_employee-table-two-info" class=" " name="n_employee-table-two-info"> </div>
+
+	<hr>
+	
+	<span class="c_spacing"> Status Information - Table  3</span>
+    <div id="i_employee-table-three-info" class="" name="n_employee-table-three-info"></div>
+    
+    <hr>
+    
+    <span class="c_spacing"> Balance Information - Table  4</span>
+	<div id="i_employee-table-four-info" class="" name="n_employee-table-four-info">
+
+            <!-- employeeId - initial balance - remaining balance--> 
+
+    </div>
+<!-- END OF EMPLOYEE TABLES 1-4 -->
+<hr>
+<!-- EMPLOYEE FORM -->
+
+	<div id="form">
+				<form id="form" action="/TRMS_EmployeeMoon/approvalhome" method="POST">
+               <div>    
+                    <h1>Employee Application Approval</h1>
+                    <!-- READ ONLY -->
+                    <div class="form-group">  <!-- 1 -->
+                        <label for="i_formId">Form Id:</label> 
+                        <input type="text" class="form-control" id="i_formId"
+                         name="n_formId" readonly placeholder="Form Id">
+                    </div>
+
+                    <div class="form-group"> <!-- 2 -->
+                        <label for="i_employeeId">Empoyee Id:</label> 
+                        <input type="text" class="form-control" id="i_employeeId"
+                         name="n_employeeId" readonly placeholder="Empoyee Id">
+					</div>
+                    
+                    <div class="form-group"> <!-- 3 -->
+                        <label for="i_estimReimbursement">Estimated Reimbursement:</label> 
+                        <input type="text" class="form-control" id="i_estimReimbursement"
+                         name="n_estimReimbursement" readonly placeholder="0.00">
+                    </div>
+
+                    <!-- BENCO APPROVER -->
+                    <div class="form-group"> <!-- 4 -->
+                        <label for="i_requestorNeedAdditionalInfoFrom">Request Additional Info:</label> 
+                        <input type="text" class="form-control" id="i_requestorNeedAdditionalInfoFrom"
+                         name="n_requestorNeedAdditionalInfoFrom" placeholder="(Optional)">
+                    </div>
+
+                   <!--
+                   		<div class="form-group">  5 (hidden) 
+                        <label for="i_requesteeResponse">Requestee Response:</label> 
+                        <input class="form-control" id="i_requesteeResponse"
+                         name="n_requesteeResponse" placeholder="Requestee Response">
+                    	</div>
+                    --> 
+
+                    <div class="form-group"> <!-- 6 -->
+                        <label for="i_alteReimbursmentAmount">Alter Reimbursment Amount:</label> 
+                        <input type="text" class="form-control" id="i_alteReimbursmentAmount" onchange="eventFunction()"
+                         name="n_alteReimbursmentAmount" placeholder="0.00" value="">
+                    </div><!--when you alter reimbursement amount does this add or subtract and display in peding?-->
+
+                    <div class="form-group"> <!-- 7 -->
+                        <label for="i_reasonForLargerAmount">Reason For Larger Amount:</label> 
+                        <input type="text" class="form-control" id="i_reasonForLargerAmount"
+                         name="n_reasonForLargerAmount" placeholder="Reason">
+                        <p class="c_formNotes">(Note: Please fill out if Alter Reimbursment Amount exceeds the estimated reimbursement amount)</p>
+                    </div>
+
+                    <div class="form-group"> <!-- 8 (Auto Populates)-->
+                        <label for="i_exceedingAvailableFunds">Exceeding Available Funds:</label> 
+                        <input type="text" class="form-control" id="i_exceedingAvailableFunds"
+                         name="n_exceedingAvailableFunds"  readonly placeholder="" value="" >
+                    </div>
+
+                    <div class="form-group"> <!-- 9 -->
+                        <label for="i_pendingAmountVal">Pending Amount Value:</label> 
+                        <input type="text" class="form-control" id="i_pendingAmountVal"
+                         name="n_pendingAmountVal" readonly placeholder="Pending Amount Value">
+                    </div>
+
+                    <!--notify of changed reimbursement amount-->
+                    <div class="form-group"> <!-- 10 -->
+                        <label for="i_notifyEmployee">Notify Employee:</label> 
+                        <select name="n_notifyEmployee" class="form-control" id="i_notifyEmployee"
+                            required="required">
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+                    </div>
+                  
+                   <!-- <div class="form-group">  18  (hidden)
+                        <label for="i_directSupAppr">Direct Supervisor Aprroval</label> 
+                        <select name="n_directSupAppr" hidden class="form-control" id="i_directSupAppr">
+                        <option value="Approved">Pending</option>
+                        <option value="Denied">Denied</option>
+                        </select>
+                    </div>-->
+							
+					<div class="form-group"> <!-- 25 (Auto-populated) -->
+                        <label for="i_markedUrgent">Marked Urgent</label> 
+                        <input type="text" readonly class="form-control" id="i_markedUrgent"
+                         name="n_markedUrgent" value="no">
+                       </div>  
+                         
+                      <div class="form-group"> <!-- 22 (Auto-populated) -->
+                        <label for="i_escalationEmailDirectSup">Escalation Email Direct Supervisor</label> 
+                        <input type="text" class="form-control"  id="i_escalationEmailDirectSup"
+                         name="n_escalationEmailDirectSup"  value="no" readonly>
+                    </div>
+                    
+                    	<div class="form-group"> <!-- 23 (Auto-populated) -->
+                        <label for="i_automaticApprovDirectSup">Automatic Approval Direct Supervisor</label> 
+                        <input type="text" class="form-control" readonly  id="i_automaticApprovDirectSup"
+                        name="n_automaticApprovDirectSup" value="no">
+                    </div>  
+                         
+                     <div class="form-group"> <!-- 24 (Auto-populated) -->
+                        <label for="i_automaticApprovDeptHead">Automatic Approval Department Head</label> 
+                        <input type="text" class="form-control" readonly id="i_automaticApprovDeptHead"
+                         name="n_automaticApprovDeptHead" value="no">
+                    </div>
+
+                    <div class="form-group"> <!-- 12 -->
+                        <label for="i_approvalStatus">Application Approval Status</label> 
+                         <select name="n_approvalStatus" class="form-control" id="i_approvalStatus"
+                            required="required">
+                            <option value="Awaiting Response">Awaiting Response</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Denied">Denied</option>
+                        </select>
+                    </div>
+                
+                  <!--<div class="form-group">  13 (hidden) 
+                        <label for="i_eventGrade"></label> 
+                        <input type="hidden" class="form-control" id="i_eventGrade"
+                         name="n_eventGrade" placeholder="Event Grade">
+                    </div>--> 
+
+                   <!--<div class="form-group"> 14 (hidden) 
+                        <label for="i_eventPresentation"></label> 
+                        <input type="hidden" class="form-control" id="i_eventPresentation"
+                         name="n_eventPresentation" placeholder="Event Presentation">
+                    </div>--> 
+
+                   <!-- <div class="form-group"> 15 (hidden) 
+                        <label for="i_mgmtViewPresent"></label> 
+                        <input type="hidden" class="form-control" id="i_mgmtViewPresent"
+                         name="n_mgmtViewPresent" placeholder="Mgmt View Presentation">
+                    </div>-->
+
+                    <!--
+                     <div class="form-group"> 16 (hidden)
+                        <label for="i_dirMgrApprPresent"></label> 
+                        <input  class="form-control" id="i_dirMgrApprPresent"
+                         name="n_dirMgrApprPresent" placeholder="Direct Manager Approve Presentation">
+                    </div>
+                    <div class="form-group"> 17 (hidden) 
+                        <label for="i_gradeStatusDirectSup"></label> 
+                        <input class="form-control" id="i_gradeStatusDirectSup"
+                         name="n_gradeStatusDirectSup" placeholder="Grade Status(Direct Supervisor)">
+                    </div>
+                    
+                    <div class="form-group">  18  (hidden)
+                        <label for="i_directSupAppr">Direct Supervisor Aprroval</label> 
+                        <select name="n_directSupAppr" hidden class="form-control" id="i_directSupAppr">
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>
+                        </select>
+                    </div>
+                -->
+                      <!--
+                      <div class="form-group"> 19  (hidden)--
+                        <label for="i_deptHeadAppr">Department Head Approval</label> 
+                        <select name="n_deptHeadAppr" hidden class="form-control" id="i_deptHeadAppr">
+                            <option value="Approved">Pending</option>
+                            <option value="Denied">Denied</option>
+                            </select>
+                    </div> 
+                    -->
+
+                    <div class="form-group"> <!-- 20 -->
+                        <label for="i_bencoFinalAppr">BenCo Final Approval</label> 
+                        <select name="n_bencoFinalAppr" class="form-control" id="i_bencoFinalAppr"
+                        required="required">
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>
+                        </select>
+                    </div>
+
+                    
+
+                    <div class="form-group"> <!-- 21 (Auto-populated) -->
+                        <label for="i_finalReimburseValBenco">Final Reimbursement Value</label> 
+                        <input type="text" class="form-control" id="i_finalReimburseValBenco"
+                         name="n_finalReimburseValBenco" readonly placeholder="Final Reimburse Value">
+                    </div>
+					
+                    <!--<div class="form-group"> 23 (Auto-populated) 
+                        <label for="i_automaticApprovDirectSup">Automatic Approval Direct Supervisor</label> 
+                        <input type="text" class="form-control" readonly  id="i_automaticApprovDirectSup"
+                        name="n_automaticApprovDirectSup" value="no">
+                    </div>
+                    -->
+
+                    <!--
+               		<div class="form-group"> <25 (Auto-populated) 
+                    <label for="i_markedUrgent">Marked Urgent</label> 
+                    <input type="text" readonly class="form-control" id="i_markedUrgent"
+                     name="n_markedUrgent" value="no">
+                     -->
+
+                     <input type="submit" value="submit">
+                       
+                </div>
+           
+                    
+        </form>
+    </div>
+        
+        
+
+
+
+        <div id="form">
+            <form id="form" action="/TRMS_EmployeeMoon/approvalbenco" method="POST">
+           <div>    
+                <h1>Final Application Approval</h1>
+                 <!-- READ ONLY -->
+                 <div class="form-group">  <!-- 1 -->
+                    <label for="f_formId">Form Id:</label> 
+                    <input type="text" class="form-control" id="f_formId"
+                     name="n_formId"  placeholder="Form Id">
+                </div>
+
+                   
+                <div class="form-group"> <!-- 2 -->
+                    <label for="f_employeeId">Empoyee Id:</label> 
+                    <input type="text" class="form-control" id="f_employeeId"
+                     name="n_employeeId" placeholder="Empoyee Id">
+                </div> 
+
+                <div class="form-group"> <!-- 6 -->
+                    <label for="f_alteReimbursmentAmount">Alter Reimbursment Amount:</label> 
+                    <input type="text" class="form-control" id="f_alteReimbursmentAmount" onchange="eventFunction()"
+                     name="n_alteReimbursmentAmount" placeholder="0.00" value="">
+                </div><!--when you alter reimbursement amount does this add or subtract and display in peding?-->
+
+                <div class="form-group"> <!-- 12 -->
+                    <label for="f_approvalStatus">Application Approval Status</label> 
+                     <select name="n_approvalStatus" class="form-control" id="f_approvalStatus"
+                        required="required">
+                        <option value="Awaiting Response">Awaiting Response</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Denied">Denied</option>
+                    </select>
+                </div>
+
+                <div class="form-group"> <!-- 20 -->
+                    <label for="f_bencoFinalAppr">BenCo Final Approval</label> 
+                    <select name="n_bencoFinalAppr" class="form-control" id="f_bencoFinalAppr"
+                    required="required">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Denied">Denied</option>
+                    </select>
+                </div>
+
+                <div class="form-group"> <!-- 21 (Auto-populated) -->
+                    <label for="f_finalReimburseValBenco">Final Reimbursement Value</label> 
+                    <input type="text" class="form-control" id="f_finalReimburseValBenco"
+                     name="n_finalReimburseValBenco" readonly placeholder="Final Reimburse Value">
+                </div>
+
+
+     
+                <input type="submit" value="submit">
+                       
+            </div>
+        </div> 
+    </form>
+
+
+</body>
+</html>
