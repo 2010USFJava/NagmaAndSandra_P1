@@ -1,5 +1,6 @@
 # EmployeeMoon Tuition Reimbursement Management System
 
+### Overview
 The purpose of the Tuition Reimbursement Management System(TRMS) is to provide a system that encourages quality knowledge growth relevant to an individual’s expertise. The
 new TRMS design will incorporate:
 - Back-End: Java, PostgreSQL, and Servlet, etc
